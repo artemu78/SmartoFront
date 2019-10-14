@@ -346,11 +346,12 @@ class MainScreen extends React.Component {
         <div className={ 'flip-container' + ((this.state.flip) ? ' hover' : '') } style={boxSize} ref={ref => { this.flipContainer = ref; }}>
           <div className="flipper">
             <div className="front" style={boxSize}>
-              <div class={scheme_style.screen_control_buttons}>
-                <div class={scheme_style.screen_name} title={this.state.text}>{this.state.name}</div>
+              <div className={scheme_style.screen_control_buttons}>
+                <div className={scheme_style.screen_name} title={this.state.text}>{this.state.name}</div>
                 <div>
                   <button className='material-icons' title='Minimize screen' onClick={this.minimizeScreen}>minimize</button>
-                  <button className='material-icons' title='Maximize screen' onClick={this.maximizeScreen}>fullscreen</button>
+                  <button className='material-icons' title='Maximize screen' onClick={this.maximizeScreen}>web_asset</button>
+                  <button className='material-icons' title='Delete screen' onClick={ () => { this.props.deleteScreen(this.props.obj) } } disabled={main}>clear</button>
                 </div>
               </div>
               <input className="inputrow" value={this.state.name} onChange={ this.handleInput } name="name" placeholder="screen name" title={this.state.text} />
@@ -403,8 +404,7 @@ class MainScreen extends React.Component {
               </div>
               <div className="screen-options">
                 <div className="bot-screen-buttons-container">
-                  <button className="screen-button" onClick={ () => { this.props.del(this.props.obj._id) } } disabled={main}>delete screen</button>
-                  <button className="screen-button" onClick={ () => { this.setState({ flip: !this.state.flip }); } }>add files ({fileListCount})</button>
+                  <button className="screen-button" onClick={ () => { this.setState({ flip: !this.state.flip }); } }><span style={{ fontSize: '17px' }} className='material-icons'>attach_file</span> add files ({fileListCount})</button>
                 </div>
                 <button className="add-child-screen btn" onClick={ () => { this.tester(this.props.obj._id) } }>add child screen</button>
               </div>

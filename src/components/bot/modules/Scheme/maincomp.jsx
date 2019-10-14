@@ -24,7 +24,7 @@ class MainComp extends React.Component {
     };
     this.getScreensData = this.getScreensData.bind(this);
     this.add = this.add.bind(this);
-    this.del = this.del.bind(this);
+    this.deleteScreen = this.deleteScreen.bind(this);
     this.data = [];
   }
 
@@ -65,7 +65,10 @@ class MainComp extends React.Component {
     return [this.data, this.botId];
   }
 
-  del (id) {
+  deleteScreen (screen_obj) {
+    let id = screen_obj._id;
+    if (!window.confirm(`delete screen ${screen_obj.name}?`))
+      return;
     const data = this.data.filter((item) => {
       return item._id !== id && item.parent !== id;
     });
@@ -98,7 +101,7 @@ class MainComp extends React.Component {
           </ul>
 
         return <li className={scheme_style.screen} key={item._id}>
-          <a><MainScreen obj={item} store={this.data} add={this.add} del={this.del} bot={this.props.bot}/></a>
+          <a><MainScreen obj={item} store={this.data} add={this.add} deleteScreen={this.deleteScreen} bot={this.props.bot}/></a>
           {child_screens}
         </li>
       }

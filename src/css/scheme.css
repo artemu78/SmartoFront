@@ -443,6 +443,7 @@ box-shadow: none;
   box-shadow: none;
   border: none;
   border-radius: 3px;
+  font-size: 17px;
 }
 
 :local(.screen_control_buttons BUTTON:HOVER) {
