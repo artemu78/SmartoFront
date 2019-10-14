@@ -1,0 +1,1 @@
+{"res":"ok","data":{"p":[{"var": "var","val": "val", "min_delay": "10", "text": "hello stupid"}],"i":[{"text":"AliexpressBot \u0442\u0435\u0441\u0442\u043e\u0432\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435","dt":"2019-02-18 22:50:08"}]}}

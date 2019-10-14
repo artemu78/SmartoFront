@@ -1,0 +1,1 @@
+{"res":"ok","data":{"c_name":"co","c_about":"ab","c_phone":"ph","c_site":"sts","markers":[{"lat":55.724756483752,"lng":37.689013671875}]}}

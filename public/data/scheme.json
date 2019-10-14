@@ -1,0 +1,104 @@
+[{"main" : {	
+"_id" : 100,
+"name" : "Hello screen",
+"text" : "Hello. This is a chat bot for Romashka company.",
+"buttons" : [{
+				"text" : "Buy",
+				"row" : 1,
+				"index" : 1,
+				"_id" : 1,
+				"dest" : 101,
+				"url"  : false
+			}, {
+				"text" : "About",
+				"row" : 2,
+				"index" : 1,
+				"dest" : 102,
+				"_id" : 2,
+				"url"  : false
+			}, {
+				"text" : "Ask question",
+				"row" : 2,
+				"index" : 2,
+				"_id" : 3,				
+				"dest" : 103,
+				"url"  : false
+			}
+		],
+"children" : [
+			{
+                "name" : "buy",
+				"text" : "Please buy someting from us, please please please",
+				"buttons" : [{
+						"text" : "Soft pchm",
+						"row" : 1,
+						"index" : 1,
+						"_id" : 11,				
+						"dest" : 103,
+						"url"  : false
+					}, {
+						"text" : "Sepul 2",
+						"row" : 1,
+						"index" : 2,
+						"_id" : 12,				
+						"dest" : 103,
+						"url"  : false
+					}, {
+						"text" : "Sepul 15",
+						"row" : 2,
+						"index" : 1,
+						"_id" : 13,				
+						"dest" : 103,
+						"url"  : false
+					}, {
+						"text" : "Sepul 4",
+						"row" : 2,
+						"index" : 2,
+						"_id" : 14,				
+						"dest" : 103,
+						"url"  : false
+					}],
+				"_id":2,
+"children" : [ {
+						"name" : "sorry",
+						"text" : "Sorry, a season is over, try to find something else",
+						"buttons" : [{
+								"text" : "Soft pchm",
+								"row" : 1,
+								"index" : 1,
+								"_id" : 15,				
+								"dest" : 103,
+								"url"  : false
+							}, {
+								"text" : "Sepul 2",
+								"row" : 1,
+								"index" : 2,
+								"_id" : 16,				
+								"dest" : 103,
+								"url"  : false
+							}, {
+								"text" : "Sepul 15",
+								"row" : 2,
+								"index" : 1,
+								"_id" : 17,				
+								"dest" : 103,
+								"url"  : false
+							}, {
+								"text" : "Sepul 4",
+								"row" : 2,
+								"index" : 2,
+								"_id" : 18,				
+								"dest" : 103,
+								"url"  : false
+							}
+						],
+						"_id" :105
+					}, {
+						"name" : "buy_success",
+						"text" : "Gotcha! Send us a address and nothing bad will happen with you",
+						"_id" : 106
+					}]
+		}
+	]
+
+}}]
