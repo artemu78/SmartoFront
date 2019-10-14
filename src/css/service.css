@@ -1,0 +1,29 @@
+.service {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 80px;
+    padding-top: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+
+.service > .text1{
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 24px;
+    color: #1E1E1E;
+}
+
+.service > .text2{
+    padding-top: 0px;
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 18px;
+    font-size: 18px;
+    color: #1E1E1E;
+}

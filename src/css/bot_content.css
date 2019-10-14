@@ -1,0 +1,120 @@
+.bot_container {
+    position: relative;
+    width: 100%;
+    left: 0px;
+    top: 80px;
+}
+
+.bot_container .header {
+    position: relative;
+    width:100%;
+    background-color: #FFFFFF;
+    height: 80px;
+    
+}
+
+.bot_container .header .bot_logo {
+    top: 11px;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline;
+}
+
+.bot_container .header .bot_logo IMG {
+    border-radius: 5px;
+	object-fit: contain;
+}
+
+.bot_container .header .header_text {
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 80px;
+    font-size: 20px;
+    color: #000000;
+    display: inline;
+    padding-right: 20px;
+    position: absolute;
+    width: 320px;
+    height: 80px;
+    overflow: hidden;
+}
+
+.bot_container .header .back{
+    text-decoration: none;
+    font-size: 44pt;
+    padding-left: 20px;
+    color: #EEEEEE;
+    line-height: 80px;
+    display: contents;
+}
+
+
+.bot_container .header .back:hover{
+    color: #000000;
+}
+
+.bot_container .content {
+    width:100%;
+    margin: 10px;
+}
+
+.bot_container .header .add{
+    right: 70px;
+    position: absolute;
+}
+
+:local(.modules){
+    left: 500px;
+    display: inline-block;
+    height: 80px;
+    position: absolute;
+}
+
+:local(.modules .module) {    
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    top: 0px;
+    display: inline-block;
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #1E1E1E;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Rectangle 8 */
+
+.bot_container .main_opt .menu {
+width: 256px;
+background: #2F313A;
+}
+
+.bot_container .main_opt .main_opt_content {
+    position: absolute;
+    left: 257px;
+    width: calc(100% - 258px);
+    padding: 40px;
+}
+
+.bot_container .bot_options {
+    padding: 40px;
+    position: relative;
+}
+
+.bot_container .bot_options .modules_content {
+    position: absolute;
+    left: 257px;
+    width: calc(100% - 300px);
+    padding-left: 40px;
+	height: calc(100vh - 240px);
+}
+
+.bot_container .Broadcast {
+    padding: 40px;
+    position: relative;
+}

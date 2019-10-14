@@ -1,0 +1,304 @@
+.splashroot{
+position: static;
+left: 0px;
+top: 0px;
+width: 100%;
+height: 956px;
+opacity: 0.8;
+background: #000000;
+z-index: 2;
+}
+
+.splashroot .goo_log_style{
+    display: block;
+}
+
+.splashroot .footer1{
+position: absolute;
+width: 140px;
+height: 205px;
+left: calc(50% - 377px);
+top: 752px;
+background: url(../img/regsplash/footer_1.png);
+opacity: 0.7;
+}
+
+.splashroot .footer2{
+position: absolute;
+width: 230px;
+height: 240px;
+left: calc(50% - 255px);
+top: 716px;
+background: url(../img/regsplash/footer_2.png);
+opacity: 0.9;
+}
+
+.splashroot .footer3{
+position: absolute;
+width: 223px;
+height: 282px;
+left: calc(50% - 111px);
+top: 675px;
+background: url(../img/regsplash/footer_3.png);
+}
+
+.splashroot .footer4{
+position: absolute;
+width: 210px;
+height: 240px;
+left: calc(50% + 39px);
+top: 716px;
+background: url(../img/regsplash/footer_4.png);
+opacity: 0.9;
+}
+
+.splashroot .footer5{
+position: absolute;
+width: 143px;
+height: 193px;
+left: calc(50% + 230px);
+top: 763px;
+background: url(../img/regsplash/footer_5.png);
+opacity: 0.7;
+}
+
+
+.splashroot .oldprice{
+position: absolute;
+width: 58.98px;
+height: 22.94px;
+left: calc(50% - 190px);
+top: 513px;
+background: url(../img/regsplash/oldprice.png);
+}
+
+
+.splashroot .price{
+    position: absolute;
+width: 35px;
+height: 24px;
+left: calc(50% - 110px);
+top: 506px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+font-size: 20px;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.splashroot .price_desc{
+position: absolute;
+width: 43px;
+height: 15px;
+left: calc(50% - 112px);
+top: 527px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+line-height: normal;
+font-size: 12px;
+
+color: #FFFFFF;
+}
+
+.splashroot .paypal_button{
+    position: absolute;
+    width: 249px;
+    height: 56px;
+    left: calc(50% - 45px);
+    top: 495px;
+    background: #FFFFFF;
+/* border: 2px solid #488ECF; */
+-webkit-box-sizing: border-box;
+        box-sizing: border-box;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.splashroot .paypal_button .paywith{
+    position: absolute;
+    left: 30px;
+    top: 17px;
+    width: 68px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background: url(../img/regsplash/pay_with.png);
+}
+
+.splashroot .paypal_button .paypal{
+    position: absolute;
+    left: 126px;
+    top: 16px;
+    width: 93px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background: url(../img/regsplash/paypal.png);
+}
+
+.splashroot .logo{
+    position: absolute;
+    width: 113px;
+    height: 70px;
+    left: calc(50% - 56px);
+    top: 100px;
+    background: url(../img/regsplash/logo.png);
+}
+
+.splashroot .ok_img{
+    position: absolute;
+    width: 41px;
+    height: 35px;
+    left: calc(50% - 35px);
+    top: 300px;
+    background: url(../img/regsplash/ok_img.png);
+}
+
+.splashroot .onestep{
+    position: absolute;
+    /*width: 646px;*/
+    height: 57px;
+    left: calc(50% - 305px);
+    top: 231px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 48px;
+
+    color: #FFFFFF;
+}
+
+.splashroot .description{
+position: absolute;
+width: 388px;
+height: 127px;
+left: calc(50% - 194px);
+top: 328px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+line-height: normal;
+font-size: 18px;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.login_box .templaterobot_logo{
+    position: absolute;
+width: 189px;
+height: 48px;
+left: calc(50% - 95px);
+top: 9px;
+
+background: url(../img/logo.png);
+}
+
+
+.login_box .logDiv{
+    /* Rectangle */
+
+position: absolute;
+width: 260px;
+height: 170px;
+left: calc(50% - 126px);
+top: 63px;
+
+background: #FFFFFF;
+border: 1px solid #E2E2E2;
+-webkit-box-sizing: border-box;
+        box-sizing: border-box;
+-webkit-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+border-radius: 4px;
+
+}
+
+
+.login_box .logDiv .google_logo{
+    /* google-1015752_960_720 */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 18px;
+top: 23px;
+
+background: url(../img/google_logo.png);
+
+}
+
+
+.login_box .logDiv .sign_descr{
+    /* Sign in with Google account to create your first bot. */
+
+position: absolute;
+width: 174px;
+height: 36px;
+left: 59px;
+top: 21px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+font-size: 14px;
+
+color: #000000;
+
+}
+
+
+.login_box .logDiv .checkbox{
+    /* Rectangle 3 */
+background-repeat-x: no-repeat;
+background-repeat-y: no-repeat;
+background-position: center;
+position: absolute;
+width: 22px;
+height: 22px;
+left: 18px;
+top: 125px;
+
+background: #E2E2E2;
+border-radius: 4px;
+
+}
+
+.login_box .logDiv .agree{
+/* I agree to TemplateRobotвЂ™s Privacy Policy. */
+
+position: absolute;
+width: 174px;
+height: 36px;
+left: 59px;
+top: 125px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+font-size: 12px;
+
+color: #000000;
+
+}
+
+
+.login_box .need_permission{
+/* We need permissions to create your account on the system. */
+text-align: center;
+position: absolute;
+width: 218.44px;
+height: 29.49px;
+left: calc(50% - 109.2px);
+top: 254.5px;
+    
+}

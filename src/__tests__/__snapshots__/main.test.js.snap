@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button text=Send> 1`] = `
+<div>
+  Send
+</div>
+`;
+
+exports[`<TextInput text=Send name=testname value=kot readOnly> 1`] = `
+<div>
+  Send
+   
+  <div>
+    hello world
+  </div>
+  <br />
+  <input
+    name="testname"
+    readOnly={true}
+    type="text"
+    value="kot"
+  />
+</div>
+`;

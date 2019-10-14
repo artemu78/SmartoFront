@@ -1,0 +1,1212 @@
+{
+	"res": "ok",
+	"bots": [
+		{
+			"name": "Kari shoes test",
+			"id": "ZkVVdCthejczMWY5akJ0Q1hGQW5odz09",
+			"logo": "kari.jpg",
+			"telegram": "884300784:AAH4u5lLtvjuy29G9pp6tzmwo9sYpWxW0f0",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "127485279",
+			"data": {
+				"bitrix": null,
+				"vk_confirm": "745baf20",
+				"vk_secret": "YQBX8408",
+				"vk_token": "5a234ac7e78c4cf845ea35e42ee88da207c3060e0fb3beea56837721bf74e50431546909a23a3c1dbf352",
+				"chatbase": "a44beadd-b111-43ce-aaf0-2a3004d886f2"
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "KS61O61N9TGQ",
+			"dialogflowid": "",
+			"create_dt": "2019-08-23 18:12:19",
+			"password": "FWWLJAQIAHBYJ",
+			"users_count": "92",
+			"owners": "yanlukashin@gmail.com,artemreva79@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 884300784,
+					"is_bot": true,
+					"first_name": "Kari",
+					"username": "OneKariBot"
+				}
+			}
+		},
+		{
+			"name": "Cryptofund",
+			"id": "TmZPbHM4cHpkUXFKR1NwNVovSmVrQT09",
+			"logo": "logo1.png",
+			"telegram": "658264321:AAGiFy1vmGeuickCqrdR4SvtAoLYNR8VZwI",
+			"facebook": null,
+			"viber": null,
+			"vkontakte": "_160527228",
+			"data": {
+				"vk_confirm": "3a83ccb0",
+				"vk_secret": "combo_speaker",
+				"vk_token": "8aa0682a4e8e58c212a7561efd8faa0e0807602d946ff41951cc6322e262413c48dea925c7240cce55784",
+				"chatbase": "d6957e00-4e1f-4f4e-ae44-134758bc0fab"
+			},
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "5KPMMUC4TOSXX",
+			"dialogflowid": null,
+			"create_dt": "2018-06-12 17:15:02",
+			"password": "7NA8UIVVOIPZC",
+			"users_count": "1",
+			"owners": "grizlistudio@gmail.com,artemreva79@gmail.com,viktor85.56@gmail.com,he110.todd.hs@gmail.com,prok.uror.ghost@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 658264321,
+					"is_bot": true,
+					"first_name": "Crypto fund test",
+					"username": "crpt_fund_test_bot"
+				}
+			}
+		},
+		{
+			"name": "Template Robot",
+			"id": "YlBTaWJxS0NpSjRGYndZVlF3d0pmdz09",
+			"logo": "logo_smart.png",
+			"telegram": "681046676:AAF9vZynvvbkpGlRmO9SHeQ2Wzfky2p9Q18",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "160527228",
+			"data": {
+				"vk_confirm": "556dff7f",
+				"vk_secret": "combo_speaker",
+				"vk_token": "8aa0682a4e8e58c212a7561efd8faa0e0807602d946ff41951cc6322e262413c48dea925c7240cce55784",
+				"chatbase": "3450eb5c-a090-488b-a05d-d36c00957277"
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "H764T84LVY3TT",
+			"dialogflowid": "",
+			"create_dt": "2018-06-12 17:15:02",
+			"password": "D2IM1AF5GKKEZ",
+			"users_count": "473",
+			"owners": "he110.todd.hs@gmail.com,artemreva79@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 681046676,
+					"is_bot": true,
+					"first_name": "Template Robot",
+					"username": "TemplateRobotBot"
+				}
+			}
+		},
+		{
+			"name": "AlfaBot test",
+			"id": "amRNeUIwZTNLOC93eUdJc0RiL0tsQT09",
+			"logo": "bot_14.jpg",
+			"telegram": "test",
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": "8063914e-03cf-4432-ac39-de3d5b876772"
+			},
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "RZT87U08EOPWW",
+			"dialogflowid": null,
+			"create_dt": "2018-08-05 15:51:24",
+			"password": "4O1D5JRGJ8YMM",
+			"users_count": "8",
+			"owners": "viktor85.56@gmail.com,artemreva79@gmail.com,grizlistudio@gmail.com,he110.todd.hs@gmail.com,prok.uror.ghost@gmail.com",
+			"tg_data": {
+				"ok": false,
+				"error_code": 404,
+				"description": "Not Found"
+			}
+		},
+		{
+			"name": "Sinergy Territory",
+			"id": "M0pLUlB2VUJMWTh6ek5JNW9DcStGZz09",
+			"logo": "syn_tb2018.jpg",
+			"telegram": "699763724:AAHeV04NnLESCkNK_1wWdifEBYJiNEMkIzo",
+			"facebook": null,
+			"viber": "48450144c667d40a-1f86a5f27c86cca3-94288767ed2519d1",
+			"vkontakte": "169782407",
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "businessplace",
+				"vk_token": "e0380594785792e53f11c4afa5a2a3a16b29106ec1e21c65166247ede65bcaec9c8211130191a3e52a4b0",
+				"chatbase": "7a20fe99-ddb0-4c86-b70e-2ecc41b4890b"
+			},
+			"chatfuel": "mELtlMAHYqR0BvgEiMq8zVek3uYUK3OJMbtyrdNPTrQB9ndV0fM7lWTFZbM4MZvD",
+			"chatfuelid": "5b5eb72fe4b0058ef8b7f713",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "ZJRGT14Y67YVV",
+			"dialogflowid": null,
+			"create_dt": "2018-08-05 19:00:21",
+			"password": "A8P1Q6K1TGLCS",
+			"users_count": "115",
+			"owners": "grizlistudio@gmail.com,artemreva79@gmail.com,viktor85.56@gmail.com,he110.todd.hs@gmail.com,rnikolaeva.sbs@gmail.com",
+			"tg_data": {
+				"ok": false,
+				"error_code": 401,
+				"description": "Unauthorized"
+			}
+		},
+		{
+			"name": "Sinergy Transformation",
+			"id": "eVBiNnM5emxzUTI1cnJRRzI1SUFlZz09",
+			"logo": "syn_trans2018.jpg",
+			"telegram": "641428088:AAGzHBVotx7CwN-Wefv81EJSpFjgXteWkCw",
+			"facebook": null,
+			"viber": "4856f7047127d578-fd894a0ff17242a2-647dbb9c947a5e76",
+			"vkontakte": "169785628",
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "transformation",
+				"vk_token": "86073ce0a270351549d79ec2e74e90979106ee9f066fe8824be3bbd3473c679c826a08aa214ffe64e791d",
+				"chatbase": "5f9c1cdd-deb9-4f6a-9cd6-0ca325bbd2ec"
+			},
+			"chatfuel": "OmIZfj5Uo6EI4XU5RpTRCYV4n1JDgUOPBb2jx7rhCRRmIXRb3McEqjwkwiHTMCYn",
+			"chatfuelid": "5b66b39a76ccbc6a3b630e0c",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "YOQLXM4DUI6EE",
+			"dialogflowid": null,
+			"create_dt": "2018-08-05 19:00:34",
+			"password": "8KVMW8TAQIM44",
+			"users_count": "1158",
+			"owners": "grizlistudio@gmail.com,artemreva79@gmail.com,viktor85.56@gmail.com,he110.todd.hs@gmail.com,rnikolaeva.sbs@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 641428088,
+					"is_bot": true,
+					"first_name": "Трансформация",
+					"username": "SBS_Transformation_Bot"
+				}
+			}
+		},
+		{
+			"name": "Алгоритмика",
+			"id": "Sk9mYWNhUFRhQTI5ZjNtSDVtL1N5QT09",
+			"logo": "algoritmika.png",
+			"telegram": "",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "127485279",
+			"data": {
+				"bitrix": "https://b24-a5h32t.bitrix24.ru/rest/1/ncsnvort84layqnd/profile/",
+				"vk_confirm": "745baf20",
+				"vk_secret": "BQCT4239",
+				"vk_token": "7a5bbb064d188589fa75a2b43d1a0209b3b028e9371defc996a5347df7a573f8bbbde70974741712005b3",
+				"chatbase": ""
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "D3O0F7N6ZYOGG",
+			"dialogflowid": "",
+			"create_dt": "2019-05-06 13:35:31",
+			"password": "QA9OTY1U4SBME",
+			"users_count": "120",
+			"owners": "yanlukashin@gmail.com,artemreva79@gmail.com"
+		},
+		{
+			"name": "My new bot",
+			"id": "enNOdEtCbEdpenRXVlZpR2RPNzVhdz09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "KT7FHXS9N9DJJ",
+			"dialogflowid": null,
+			"create_dt": "2019-04-30 16:46:33",
+			"password": "1LD8B2CH67O9X",
+			"users_count": "4",
+			"owners": "scuev76@gmail.com,artemreva79@gmail.com"
+		},
+		{
+			"name": "Alfabank",
+			"id": "dGlFdjhnV2VBTHQ2YStuV1IxaTRFQT09",
+			"logo": "logo1.png",
+			"telegram": "632983222:AAGlZp0rwcqANmP0iKytZtQxlYar0RA5FhI",
+			"facebook": null,
+			"viber": null,
+			"vkontakte": "",
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "UBE49VBVWY1XX",
+			"dialogflowid": null,
+			"create_dt": "2018-06-12 17:15:02",
+			"password": "RNR69358SQLX9",
+			"users_count": "0",
+			"owners": "he110.todd.hs@gmail.com,prok.uror.ghost@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 632983222,
+					"is_bot": true,
+					"first_name": "Alfabank kazahstan test",
+					"username": "alfakaztest_bot"
+				}
+			}
+		},
+		{
+			"name": "Radosvet",
+			"id": "TExLVmo3QVhjdU1wczZCbzVnMkNFZz09",
+			"logo": "bot_18.png",
+			"telegram": "678679932:AAG47hz0iTw2HZnkJ9BaKHrSa1uaO13BD44",
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": "837858e1-418c-44ef-a641-bcb07fe2532a"
+			},
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "OBKQCCRIN32SS",
+			"dialogflowid": null,
+			"create_dt": "2018-08-15 21:08:53",
+			"password": "YUFNXQK3MOBZE",
+			"users_count": "3",
+			"owners": "grizlistudio@gmail.com,artemreva79@gmail.com,viktor85.56@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 678679932,
+					"is_bot": true,
+					"first_name": "Radosvet",
+					"username": "radosvet_village_bot"
+				}
+			}
+		},
+		{
+			"name": "Smartoboto bot demo",
+			"id": "QURJUzFRb3ZGR245M24yLzJJUmRpQT09",
+			"logo": "logo_smart.png",
+			"telegram": "876708345:AAEO3sSk5F93bGNN4YYIZ2E2g0AOqNtex5M",
+			"facebook": "EAADJTmFmgpsBABJfYtwuvVzvYFAZAJMJeZCJFZAtrdLBxVyyVTAfzwfx9KZCn10HluhAMtaoVegjv3ZB0ga6EWRjmBFw17eU3OE",
+			"viber": "486167e21927d387-3b08ee3e08f6cd8d-62198ecc36594f7d",
+			"vkontakte": "181608188",
+			"data": {
+				"vk_confirm": "1a58accb",
+				"vk_secret": "klsdjfhui",
+				"vk_token": "27df870a581bace0a5ff89d85df80978f7c1c241da2467fc3c83bbb24c0d83b24635ca68f895ea43d8fab",
+				"chatbase": "e6f2dba7-3fbb-42ce-b75c-e03628549c23"
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "small-talk-686e0-2961440f33ae.json",
+			"widget": "E2Q6OBTUV2QDD",
+			"dialogflowid": "small-talk-686e0",
+			"create_dt": "2018-08-06 10:51:01",
+			"password": "OPS3MNW51D2QE",
+			"users_count": "192",
+			"owners": "artemreva79@gmail.com,yanlukashin@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 876708345,
+					"is_bot": true,
+					"first_name": "Smartoboto",
+					"username": "smartoboto_bot"
+				}
+			}
+		},
+		{
+			"name": "TonyRobbins",
+			"id": "ZjEzOUprNWtYb21xVXhnWW9peEhBQT09",
+			"logo": "podcast-tim-robbins.jpg",
+			"telegram": "673922534:AAHtZqmrPBztEpGY9VPELwSF4vkmqkUTQR0",
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": ""
+			},
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "J4RY5O37Z1TEE",
+			"dialogflowid": null,
+			"create_dt": "2018-08-30 11:36:05",
+			"password": "8UCX7JDRC6SNX",
+			"users_count": "196",
+			"owners": "grizlistudio@gmail.com,artemreva79@gmail.com,viktor85.56@gmail.com,rnikolaeva.sbs@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 673922534,
+					"is_bot": true,
+					"first_name": "Synergy Networking",
+					"username": "Sbs_networking_bot"
+				}
+			}
+		},
+		{
+			"name": "Novichbot",
+			"id": "dUdtZmtlUWlYTXh6WTk1cHNoNU03QT09",
+			"logo": "logo_smart.png",
+			"telegram": "557375724:AAGooy-BxA_VJO-gi4fTy5_BFSW7KF-kYDc",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "",
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": "e6f2dba7-3fbb-42ce-b75c-e03628549c23"
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "vivatexpert-4b17dafedc63.json",
+			"widget": "SUDI7EZ8VE0EE",
+			"dialogflowid": "vivatexpert",
+			"create_dt": "2018-08-30 21:16:36",
+			"password": "YEWK0BCERI4SC",
+			"users_count": "2",
+			"owners": "grizlistudio@gmail.com,artemreva79@gmail.com,viktor85.56@gmail.com,prok.uror.ghost@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 557375724,
+					"is_bot": true,
+					"first_name": "Novichbot",
+					"username": "Novichbot"
+				}
+			}
+		},
+		{
+			"name": "fake ",
+			"id": "ZFdEYnduREowR09SY3lmZDAvbXFrZz09",
+			"logo": "logo_smart.png",
+			"telegram": "",
+			"facebook": "",
+			"viber": "test",
+			"vkontakte": "",
+			"data": {
+				"vk_confirm": null,
+				"vk_secret": null,
+				"vk_token": null,
+				"chatbase": null
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "6QM3ZGE9KLP00",
+			"dialogflowid": "",
+			"create_dt": "2018-08-31 18:43:09",
+			"password": "Y9Y9QV7DGVCZR",
+			"users_count": "3",
+			"owners": "grizlistudio@gmail.com,artemreva79@gmail.com,viktor85.56@gmail.com"
+		},
+		{
+			"name": "Test bot Rostislav",
+			"id": "Tk9RWnh5VHgvMWE1SHJzeVFKK09MZz09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": ""
+			},
+			"chatfuel": "ctfl token",
+			"chatfuelid": "chtf id",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "JBW4CYRPY0S",
+			"dialogflowid": null,
+			"create_dt": "2018-09-05 11:55:46",
+			"password": "HIY5KCWG10NSM",
+			"users_count": "0",
+			"owners": "artemreva79@gmail.com,plankin.rostislav@gmail.com"
+		},
+		{
+			"name": "My new bot",
+			"id": "NnI0OTF1ZFNsdlpScmcxRk01RGpZdz09",
+			"logo": "logo_smart.png",
+			"telegram": "635942806:AAH9FGKqmun6Jr5jPd7bYQcwxbivg96c6Kg",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "",
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": ""
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "RDDQEK42O6UWW",
+			"dialogflowid": "",
+			"create_dt": "2018-09-29 23:14:49",
+			"password": "K06DQFEQTHYCT",
+			"users_count": "0",
+			"owners": "artemreva79@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 635942806,
+					"is_bot": true,
+					"first_name": "Smartoboto Referals Test",
+					"username": "smrtbt_referals_bot"
+				}
+			}
+		},
+		{
+			"name": "BB Craft",
+			"id": "aEZHbXN1aVlUN2dPUTY3VlJlSEs1Zz09",
+			"logo": "logo_smart.png",
+			"telegram": "762787337:AAGO0ZgEoO5RrXxyXTdvVDSPDOjDi23761A",
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "IYPAQX03L7PP",
+			"dialogflowid": null,
+			"create_dt": "2018-09-29 23:24:09",
+			"password": "OIGIHQE2BIB6M",
+			"users_count": "1",
+			"owners": "artemreva79@gmail.com,uliapavlikova95@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 762787337,
+					"is_bot": true,
+					"first_name": "BB Craft pubs",
+					"username": "Bbcraft_bot"
+				}
+			}
+		},
+		{
+			"name": "TMall horror bot",
+			"id": "dS8xTTMwbm9CL002RXk3d08xUGJZQT09",
+			"logo": "logo_ali.jpg",
+			"telegram": "670900055:AAGsPQHu2NbUueNKg5uGKclmfF8hhKLv5PU",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "97684308",
+			"data": {
+				"vk_confirm": "ea8ae6ce",
+				"vk_secret": "hfdtgvsehkl",
+				"vk_token": "37f8119d485b9efcc30402631b4d81dd63dea9c38d791fd66372987bd7e3da761b1b91a12ebca6e3854ac",
+				"chatbase": "d003d67b-4923-409d-b0be-600d3dca5c84"
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "aliexpress template",
+			"modules": [
+				1,
+				7,
+				11
+			],
+			"dialogflow": "",
+			"widget": "3GLTTX0N64A77",
+			"dialogflowid": "",
+			"create_dt": "2018-10-05 04:03:04",
+			"password": "FH8MZ9D2OWC4G",
+			"users_count": "5047",
+			"owners": "triniti@pichesky.ru,artemreva79@gmail.com,yanlukashin@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 670900055,
+					"is_bot": true,
+					"first_name": "Aliexpress goods promotional",
+					"username": "aligoodspromo_bot"
+				}
+			}
+		},
+		{
+			"name": "Intersystems community",
+			"id": "SVlHdzl4SytXbmtOOGFjQm83THRHdz09",
+			"logo": "logo_smart.png",
+			"telegram": "724470542:AAHvDMImOHICyKWjH0OBXWjjHfI-SRxVkwU",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "",
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": ""
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "Z7H6S6C03LIUU",
+			"dialogflowid": "",
+			"create_dt": "2018-11-13 17:50:28",
+			"password": "61YPGTBLRKT5Z",
+			"users_count": "2",
+			"owners": "artemreva79@gmail.com,evgeny.shvarov@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 724470542,
+					"is_bot": true,
+					"first_name": "InterSystems Community",
+					"username": "intersystemscommunitybot"
+				}
+			}
+		},
+		{
+			"name": "Bad drivers in da car",
+			"id": "MEdwdXFiWFV3SFZML0k5Q1V6MDlNUT09",
+			"logo": "logo_santa.png",
+			"telegram": "884229107:AAFvSU-w9UzGxiGKZu9vNKMwnDTkioImfU8",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "186219593",
+			"data": {
+				"vk_confirm": "b608c275",
+				"vk_secret": "YSMH8137",
+				"vk_token": "63ba94fcd0d45197dae85fbd374cbef220a0a60e24b22fc25771f5f3c94a440a0da2c20e89dad36bde01c",
+				"chatbase": ""
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "ZIPRWGMIIP511",
+			"dialogflowid": "",
+			"create_dt": "2019-04-10 14:25:54",
+			"password": "BQ5PIUYDBWD1Q",
+			"users_count": "25",
+			"owners": "sleeeper.ok@gmail.com,artemreva79@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 884229107,
+					"is_bot": true,
+					"first_name": "Bad drivers in da car",
+					"username": "badguysindacarbot"
+				}
+			}
+		},
+		{
+			"name": "My new bot",
+			"id": "eDNlRll1bXBCdkpmRDdVQlV2UmlXQT09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "9WOPU3WPUPG55",
+			"dialogflowid": null,
+			"create_dt": "2019-04-22 11:29:47",
+			"password": "OBC47QCFDVLFV",
+			"users_count": "0",
+			"owners": "artemreva79@gmail.com,triniti@pichesky.ru"
+		},
+		{
+			"name": "Radio 1",
+			"id": "U3pDandOK0pTSEVIY0RBL2ZXc05HUT09",
+			"logo": "radio1.png",
+			"telegram": "972952592:AAF-0PKnFPFMpjCZRLCR_Qu5fdI5s4KBp3k",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "",
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": ""
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "9QW2PE4LHBL99",
+			"dialogflowid": "",
+			"create_dt": "2019-04-25 20:50:44",
+			"password": "WFYUTW2KCL1YJ",
+			"users_count": "1",
+			"owners": "artemreva79@gmail.com",
+			"tg_data": {
+				"ok": true,
+				"result": {
+					"id": 972952592,
+					"is_bot": true,
+					"first_name": "Radio 1 test",
+					"username": "radio1test_bot"
+				}
+			}
+		},
+		{
+			"name": "Just a new bot",
+			"id": "VXZXM29oeGVxNTY4SGlFRFZtbmh3dz09",
+			"logo": "logo_smart.png",
+			"telegram": "",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "158319240",
+			"data": {
+				"vk_confirm": "9cd0756f",
+				"vk_secret": "WSHI2289",
+				"vk_token": "9a4d993d83a436ff41610a056fa64f5d0817f2e2b6bdf3de3d98b0d2e49afae2230a7e8669634b822fed7",
+				"chatbase": ""
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "Z7DULO1T66PEX",
+			"dialogflowid": null,
+			"create_dt": "2019-09-04 14:22:42",
+			"password": "HESOYPE43ET1P",
+			"users_count": "32",
+			"owners": "artemreva79@gmail.com,yanlukashin@gmail.com"
+		},
+		{
+			"name": "My new bot test",
+			"id": "aGJLOGI2VHcwclVUVm5ZcDVmOVZrdz09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": "59568938",
+			"data": {
+				"vk_confirm": "79d23e53",
+				"vk_secret": "PLDD7789",
+				"vk_token": "a3fde825bdcba2363ed0568ebb2ff25011f158313f6f4cab625eb4771244e48ed4ea283cfefdc125c6c81"
+			},
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "H35JH343OQF9U",
+			"dialogflowid": null,
+			"create_dt": "2019-09-04 17:09:09",
+			"password": "4NY04EISRVQ52",
+			"users_count": "2",
+			"owners": "artemreva79@gmail.com,hlogeon1@gmail.com"
+		},
+		{
+			"name": "New Bot for Store",
+			"id": "MjR1OFpTWlVkU0RwS2YrdFkrQzR4dz09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": "147228990",
+			"data": {
+				"vk_confirm": "e83b4029",
+				"vk_secret": "YOAA4771",
+				"vk_token": "536e1f566e3d5478398b923c9dda32e14b8275c5d50897112cb2313240e0f6463d2fc22da7ff058500252"
+			},
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "YDTJ27W388RAZ",
+			"dialogflowid": null,
+			"create_dt": "2019-09-04 18:20:04",
+			"password": "H2T1I3Y9Z12CE",
+			"users_count": "4",
+			"owners": "artemreva79@gmail.com,yanlukashin@gmail.com"
+		},
+		{
+			"name": "My new bot",
+			"id": "djUyemkzbk9CMWg5QVNCWVh1eU94UT09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "4I15O341HQX7A",
+			"dialogflowid": null,
+			"create_dt": "2019-09-05 18:29:25",
+			"password": "0TN5OHUZTVSNC",
+			"users_count": "0",
+			"owners": "artemreva79@gmail.com,anisimov24@gmail.com"
+		},
+		{
+			"name": "чатбот ВИАПИ",
+			"id": "OTZjd3BtVnV5SERoVUdQR0dqTjFHZz09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "XKQAQVIW2JBTH",
+			"dialogflowid": null,
+			"create_dt": "2019-09-09 02:21:06",
+			"password": "2Y1RPSXDX2UWM",
+			"users_count": "2",
+			"owners": "salnsg@gmail.com"
+		},
+		{
+			"name": "My new bot",
+			"id": "cUtXOUhxUXZ3NlZ1RjdvOGx1Y2pNZz09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "73QQF8R199ZRO",
+			"dialogflowid": null,
+			"create_dt": "2019-09-09 22:10:11",
+			"password": "CK57YIZ5ZK5E0",
+			"users_count": "0",
+			"owners": "leonid.botmaker@gmail.com"
+		},
+		{
+			"name": "My new bot",
+			"id": "Zm9HamZhTFdDZDhqb3l0TkxyOUZodz09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "1DXL3Z0ONRQ1C",
+			"dialogflowid": null,
+			"create_dt": "2019-09-10 13:12:12",
+			"password": "W4BA8IBAHX497",
+			"users_count": "0",
+			"owners": "staconik@gmail.com"
+		},
+		{
+			"name": "Sedov",
+			"id": "clQyOWgyS1owMVpJY3MzN2ZNSFpyZz09",
+			"logo": "logo_smart.png",
+			"telegram": "",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "",
+			"data": {
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": ""
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "D2F8A0IO6JZCU",
+			"dialogflowid": "",
+			"create_dt": "2019-09-13 17:34:23",
+			"password": "T8NFBNA2KFWD2",
+			"users_count": "47",
+			"owners": "yanlukashin@gmail.com,artemreva79@gmail.com,m.b.sedov@gmail.com"
+		},
+		{
+			"name": "My new bot",
+			"id": "ME52SlhCZTA0YmEvQ1lYWHFPL3FCdz09",
+			"logo": "logo_smart.png",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "SBN7I5F8HY8JB",
+			"dialogflowid": null,
+			"create_dt": "2019-09-16 15:46:19",
+			"password": "EHJJHFLCB40M8",
+			"users_count": "0",
+			"owners": "m.b.sedov@gmail.com"
+		},
+		{
+			"name": "Седень Виталина, старший менеджер",
+			"id": "TWdYc1JjeVRVMFAwa0dqdW44L2Z5QT09",
+			"logo": "3dplitka.jpg",
+			"telegram": "",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "",
+			"data": {
+				"bitrix": "",
+				"vk_confirm": "",
+				"vk_secret": "",
+				"vk_token": "",
+				"chatbase": "30214b6c-de21-4d37-b20f-fd975326db31"
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "EINMIXJYPL9EQ",
+			"dialogflowid": "",
+			"create_dt": "2019-09-20 10:36:51",
+			"password": "C3GGR4UMR58H4",
+			"users_count": "180",
+			"owners": "yanlukashin@gmail.com,r.d.hafizov@gmail.com,artemreva79@gmail.com"
+		},
+		{
+			"name": "Anglomania",
+			"id": "Uk9SeVpVSjcrcXE5QS9xcXNNaDBlZz09",
+			"logo": "anglomania_logo.jpg",
+			"telegram": null,
+			"facebook": null,
+			"viber": null,
+			"vkontakte": null,
+			"data": null,
+			"chatfuel": null,
+			"chatfuelid": null,
+			"template": "standart template",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": null,
+			"widget": "EL4BAD31YW01S",
+			"dialogflowid": null,
+			"create_dt": "2019-09-25 19:16:10",
+			"password": "RFSZFDXBJRBHT",
+			"users_count": "30",
+			"owners": "artemreva79@gmail.com,yanlukashin@gmail.com"
+		},
+		{
+			"name": "My new bot",
+			"id": "OTB2Qm8wV2U2NEJ5dTJ1MEJLVm1Rdz09",
+			"logo": "bot_61.jpg",
+			"telegram": "",
+			"facebook": "",
+			"viber": "",
+			"vkontakte": "28816424",
+			"data": {
+				"bitrix": null,
+				"vk_confirm": "37322bff",
+				"vk_secret": "DKWI1619",
+				"vk_token": "d7b6022ff8128bf22f99db1cff6e7b5cdbb04b4217ea61be9a06ed80ba8c4fa0e8382c961af817767ec69",
+				"chatbase": null
+			},
+			"chatfuel": "",
+			"chatfuelid": "",
+			"template": "Info bot",
+			"modules": [
+				1,
+				7,
+				12,
+				13
+			],
+			"dialogflow": "",
+			"widget": "J9TUOL1XY22T9",
+			"dialogflowid": "",
+			"create_dt": "2019-10-01 10:18:58",
+			"password": "4GWIAOI9S6A3R",
+			"users_count": "28",
+			"owners": "yanlukashin@gmail.com,nikitapaklin94447@gmail.com"
+		}
+	],
+	"modules": [
+		{
+			"id": "1",
+			"name": "About",
+			"visual": "1"
+		},
+		{
+			"id": "2",
+			"name": "Settings",
+			"visual": "1"
+		},
+		{
+			"id": "3",
+			"name": "Question",
+			"visual": "1"
+		},
+		{
+			"id": "4",
+			"name": "Referals",
+			"visual": "1"
+		},
+		{
+			"id": "5",
+			"name": "Materials",
+			"visual": "1"
+		},
+		{
+			"id": "6",
+			"name": "Themes",
+			"visual": "1"
+		},
+		{
+			"id": "7",
+			"name": "Scheme",
+			"visual": "1"
+		},
+		{
+			"id": "10",
+			"name": "Synergy",
+			"visual": "1"
+		},
+		{
+			"id": "11",
+			"name": "QA screens",
+			"visual": "1"
+		},
+		{
+			"id": "12",
+			"name": "Send dialog",
+			"visual": "0"
+		},
+		{
+			"id": "13",
+			"name": "Bitrix integration",
+			"visual": "0"
+		}
+	]
+}

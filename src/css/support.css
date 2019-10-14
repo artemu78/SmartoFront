@@ -1,0 +1,68 @@
+:local(.support) {
+    position: absolute;
+    width: calc(100% - 180px);
+    left: 0px;
+    top: 80px;
+    padding-top: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+
+:local(.text1) {
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 24px;
+    color: #1E1E1E;
+}
+
+
+:local(.text2) {
+    padding-top: 0px;
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 18px;
+    font-size: 18px;
+    color: #1E1E1E;
+}
+
+
+:local(.text3) {
+    padding-top: 34px;
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;font-style: normal;
+    font-weight: normal;
+    line-height: 18px;
+    font-size: 14px;
+    color: #1E1E1E;
+}
+
+:local(.textArea) {
+    padding-top: 4px;
+    padding-bottom: 20px;
+    width: 709px;
+    height: 146px;
+    background: #FFFFFF;
+    border: 2px solid #E2E4FA;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+:local(.send_btn) {
+    margin-top: 20px;
+    width: 176px;
+    height: 42px;
+    background: #484DCF;
+    border-radius: 5px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+:local(.send_btn:hover){
+    background-color: #282DBF;
+}

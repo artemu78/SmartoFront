@@ -1,0 +1,60 @@
+:local(.button){
+  margin-top: 20px;
+  width: 176px;
+  height: 42px;
+  background: #484DCF;
+  border-radius: 5px;
+  line-height: 42px;
+  font-size: 16px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+}
+
+:local(.button):hover{
+  background-color: #282DBF;
+}
+
+
+:local(.text_input) {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  left: 12px;
+  font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 18px;
+  font-size: 14px;
+  color: #1E1E1E;
+}
+
+:local(.text_input) input[type="text"], :local(.text_input) textarea{
+  width: 372px;
+  height: 42px;
+  background: #FFFFFF;
+  border: 2px solid #E2E4FA;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin-top: 4px;
+  margin-bottom: 20px;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+:local(.text_input) input[type="number"] {
+  width: 90px;
+  height: 42px;
+  background: #FFFFFF;
+  border: 2px solid #E2E4FA;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin-top: 4px;
+  margin-bottom: 20px;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+:local(.text_input) textarea{
+  height: auto;
+}

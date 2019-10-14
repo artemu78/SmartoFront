@@ -1,0 +1,122 @@
+
+.logo{
+position: absolute;
+width: 200px;
+height: 50px;
+left: 60px;
+top: 15px;
+}
+
+/* Rectangle */
+.root_row1 > .header{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 80px;
+    left: 0px;
+    top: 0px;
+
+    background: #F1F2FA;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.root_row1 > .header > .all {
+    position: absolute;
+    width: 161px;
+    height: 80px;
+    left: 280px;
+    top: 0px;
+    
+    background-image: url('../img/all_temp.png');
+    background-position: 34px, 20px;
+    background-repeat: no-repeat;
+}
+
+/* All templates */
+.header > .all > .text {
+    height: 19px;
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-style: normal;
+    
+    line-height: normal;
+    font-size: 16px;
+    
+    padding-left: 46px;
+    /* padding-top: 20px; */
+    position: absolute;
+    /* display: inline; */
+    position: relative;
+    padding-left: 56px;
+    padding-top: 31px;
+}
+
+.items{
+    right: 300px;
+    display: flex;
+    position: absolute;
+}
+
+.item {    
+width: 80px;
+height: 80px;
+line-height: 80px;
+text-align: center;
+top: 0px;
+display: inline;
+font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+color: #1E1E1E;
+}
+
+.header > .user_logo 
+{
+    width: 159px;
+    height: 80px;
+    position: absolute;
+    right: 20px;
+}
+
+.header > .user_logo > .user_pic
+{
+/* Ellipse */
+position: absolute;
+width: 32px;
+height: 32px;
+left: 15px;
+top: 24px;
+border: 1px solid #488ECF;
+box-sizing: border-box;
+border-radius: 50%;
+}
+
+.header > .user_logo > .user_name
+{
+/* Macsimus */
+position: absolute;
+width: 75px;
+height: 19px;
+right: 15px;
+top: 30px;
+
+font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+font-size: 16px;
+
+color: #1E1E1E;
+}
+
+.selected{
+    background-color: #E2E4FA;
+    color: #488ECF;
+    font-weight: 500;
+}
+
+.selectable:hover{
+    background-color: #E2E4FA;
+    color: #488ECF;
+    cursor: pointer;
+}

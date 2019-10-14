@@ -1,0 +1,182 @@
+
+.container {
+    left: 257px;
+    right: 0px;
+    top: 81px;
+    padding: 20px;    
+    position: absolute;
+}
+
+.container .template{
+margin: 20px;
+display: inline-block;
+width: 178px;
+height: 265px;
+background: linear-gradient(180deg, rgba(72, 142, 207, 0) 0%, #488ECF 100%), linear-gradient(0deg, rgba(47, 49, 58, 0.67), rgba(47, 49, 58, 0.67)), url(../img/templates/bg_1.jpg);
+box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+
+.container .template > .name {
+position: absolute;
+width: 132px;
+height: 54px;
+padding-left: 20px;
+padding-top: 54px;
+font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+font-style: normal;
+font-weight: bold;
+line-height: 18px;
+font-size: 16px;
+color: #FFFFFF;
+}
+
+.container .template > .descr{
+position: absolute;
+width: 120px;
+height: 32px;
+padding-left: 20px;
+padding-top: 124px;
+font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+font-style: normal;
+font-weight: normal;
+line-height: 16px;
+font-size: 14px;
+color: #FFFFFF;
+}
+
+.container .template > .vk {
+position: absolute;
+width: 10.58px;
+height: 6.04px;
+margin-left: 25px;
+margin-top: 180px;
+}
+
+.container .template > .viber {
+position: absolute;
+width: 10.58px;
+height: 6.04px;
+margin-left: 50px;
+margin-top: 180px;
+}
+
+.container .template > .tm {
+position: absolute;
+width: 10.58px;
+height: 6.04px;
+margin-left: 75px;
+margin-top: 180px;
+}
+
+.container .template > .fb {
+position: absolute;
+width: 10.58px;
+height: 6.04px;
+margin-left: 100px;
+margin-top: 180px;
+}
+
+.container .template .preview{
+    position: absolute;
+    line-height: 26px;
+    margin-left: 32px;
+    margin-top: 220px;
+    width: 120px;
+    height: 26px;
+    background: #484DCF;
+    border: 1px solid #484DCF;
+    box-sizing: border-box;
+    border-radius: 100px;
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.preview:hover{
+    background: #282DBF;
+}
+
+/* pop_up */
+.template_full{    
+
+width: 478px;
+height: 409px;
+
+
+background: linear-gradient(180deg, rgba(72, 142, 207, 0) 0%, #488ECF 112.46%), linear-gradient(0deg, rgba(0, 0, 0, 0.67), rgba(0, 0, 0, 0.67)), url(../img/templates/bg_3.jpg);
+box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+border-radius: 5px;
+padding-left: 40px;
+padding-top: 126px;
+padding-right: 40px;
+}
+
+.template_full > .name {
+background-color: transparent;
+font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+font-style: normal;
+font-weight: bold;
+line-height: 30px;
+font-size: 24px;
+color: #FFFFFF;
+}
+
+.template_full > .full_descr{
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 16px;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin-top: 15px;
+}
+
+.template_full > .workto{
+font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+font-style: normal;
+font-weight: normal;
+line-height: 16px;
+font-size: 14px;
+color: #FFFFFF;
+margin-top: 25px;
+}
+
+.template_full > .workto > SPAN {
+    line-height: 1;
+    vertical-align: super;
+}
+
+.template_full > .workto > img {
+    margin-left: 8px;
+}
+
+.x_btn{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.templ_buttons{
+    padding-top: 50px;
+}
+
+.templ_buttons > DIV {
+    display: inline;
+    margin-right: 50px;
+    background-color: #488ECF;
+    padding: 7px 38px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.templ_buttons > DIV:hover {
+    background-color: #484DCF;
+}

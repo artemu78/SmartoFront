@@ -1,0 +1,13 @@
+:local(.usersHeader) {
+  font-weight: bold;
+}
+
+:local(.usersRow) {
+  cursor: pointer;
+}
+
+:local(.fakeButton) {
+  background-color: #EEE;
+  padding: 7px;
+  border-radius: 4px;
+}

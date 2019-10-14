@@ -1,0 +1,15 @@
+:local(.Broadcast) {
+    border: 1px solid #E2E4FA;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    width: 600px;
+    padding: 15px;
+}
+
+:local(.pushes) {
+  color: #1e1e1e;
+  margin-top: 20px;
+}
