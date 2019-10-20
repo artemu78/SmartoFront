@@ -67,9 +67,9 @@ class MainScreen extends React.Component {
       module: props.obj.module,
       files: ((props.obj.media === undefined || props.obj.media === null) ? [] : props.obj.media),
       dlgflw_intent: props.obj.dlgflw_intent,
-      next_screen: props.obj.next_screen
+      next_screen: props.obj.next_screen,
+      screenContentDisplayCSS: null
     };
-    this.tester = this.tester.bind(this);
     this.toggleDestinationSelection = this.toggleDestinationSelection.bind(this);
     this.cancelBtnOpts = this.cancelBtnOpts.bind(this);
     this.saveBtn = this.saveBtn.bind(this);
@@ -85,7 +85,8 @@ class MainScreen extends React.Component {
 
   componentWillReceiveProps () {
     this.setState({
-      boxSize: null
+      boxSize: null,
+      screenContentDisplayCSS: null
     })
   }
 
@@ -134,12 +135,6 @@ class MainScreen extends React.Component {
     }
     let post_resuls = post(url, formData, config);
     return post_resuls;
-  }
-
-  tester (parent) {
-    this.props.add(parent)
-    setTimeout(() => {
-    }, 5000);
   }
 
   handleInput (e) {
@@ -324,7 +319,8 @@ class MainScreen extends React.Component {
       boxSize: {
         width: '160px',
         height: '35px'
-      }
+      },
+      screenContentDisplayCSS: 'none'
     });
   }
 
@@ -333,17 +329,19 @@ class MainScreen extends React.Component {
       boxSize: {
         width: '300px',
         height: '465px'
-      }
+      },
+      screenContentDisplayCSS: 'block'
     });
   }
 
   render () {
-    let boxSize = this.state.boxSize;
+    let { boxSize, screenContentDisplayCSS, flip } = this.state;
     let main = (this.props.obj.parent === 0);
     let fileListCount = this.fileListCount();
+
     return (
       <React.Fragment>
-        <div className={ 'flip-container' + ((this.state.flip) ? ' hover' : '') } style={boxSize} ref={ref => { this.flipContainer = ref; }}>
+        <div className={ 'flip-container' + (flip ? ' hover' : '') } style={boxSize} ref={ref => { this.flipContainer = ref; }}>
           <div className="flipper">
             <div className="front" style={boxSize}>
               <div className={scheme_style.screen_control_buttons}>
@@ -354,60 +352,62 @@ class MainScreen extends React.Component {
                   <button className='material-icons' title='Delete screen' onClick={ () => { this.props.deleteScreen(this.props.obj) } } disabled={main}>clear</button>
                 </div>
               </div>
-              <input className="inputrow" value={this.state.name} onChange={ this.handleInput } name="name" placeholder="screen name" title={this.state.text} />
-              <textarea spellCheck={false} className="inputrow" value={this.state.text} onChange={ this.handleInput } placeholder="Screen content in bot" name="text" />
-              <div className="fields_container">
-                <input className="bot-screen-input child_field" value={this.state.screen_var} type="text" onChange={ this.handleInput } name="screen_var" placeholder="Variable" title="Set user variable"/>
-                <div>&nbsp;=&nbsp;</div>
-                <input className="bot-screen-input child_field" value={this.state.screen_val} type="text" onChange={ this.handleInput } name="screen_val" placeholder="Value" title="To this value"/>
-              </div>
-
-              <div className="fields_container">
-                <input className="bot-screen-input child_field" value={this.state.varname} type="text" onChange={ this.handleInput } name="varname" placeholder="text input in variable" title="All user input gets in this variable" />
-                <select className="bot-screen-input child_field" value={this.state.module} onChange={ this.handleInput } name="module" title="Show this module instead of screen content">
-                  {this.modulesList()}
-                </select>
-              </div>
-              <div className="fields_container">
-                <input className="bot-screen-input child_field" type="text" value={this.state.dlgflw_intent} onChange={ this.handleInput } name="dlgflw_intent" placeholder="Dialogflow intent" title="Display this screen as intent response"/>
-                <input className="bot-screen-input child_field" type="text" value={this.state.next_screen} onChange={ this.handleInput } name="next_screen" placeholder="Next screen name" title="Display next screen immediately"/>
-              </div>
-              <div className="buttons">
-                <ul className="buttons_row">
-                  { this.ButtonsList() }
-                </ul>
-                <button className={scheme_style.add_button_row} onClick={ () => { this.addButtonNewRow() } }>+</button>
-                { (!this.state.cancel)
-                  ? <React.Fragment>
-                    <div className={scheme_style.AddButton}>
-                      <input placeholder="Button name" className={scheme_style.btnName} value={this.state.btnName} onChange={ this.handleInput } type="text" name="btnName"/>
-                      <button className={scheme_style.done_screen_files} onClick={ this.toggleDestinationSelection }>Destination</button>
-                      {(this.state.showDestinationSreens)
-                        ? <select size="5" onChange={ this.handleInput } value={this.state.btnDest} className={scheme_style.button_data} name="btnDest">
-                          { this.ScreensAsSelectOptions() }
-                        </select>
-                        : null}
-
-                      <input placeholder="URL" value={this.state.btnUrl} name="btnUrl" onChange={ this.handleInput } className={scheme_style.btnName} type="text"/>
-                      <input placeholder="Button payload" value={this.state.btnPayload} name="btnPayload" onChange={ this.handleInput } className={scheme_style.btnName} type="text"/>
-                      <div className="fields_container">
-                        <input className="bot-screen-input child_field" type="text" value={this.state.btnRow} onChange={ this.handleInput } name="btnRow" placeholder="Row" title="0-based row position"/>
-                        <input className="bot-screen-input child_field" type="text" value={this.state.btnIndex} onChange={ this.handleInput } name="btnIndex" placeholder="Index" title="0-based position in row"/>
-                      </div>
-                      <div>
-                        <button className={scheme_style.AddButtonSave} onClick={ this.saveBtn }>save</button>
-                        <button className={scheme_style.AddButtonSave + ' ' + scheme_style.AddButtonCancel} onClick={ this.cancelBtnOpts }>cancel</button>
-                      </div>
-                    </div>
-                  </React.Fragment>
-                  : null}
-              </div>
-              <div className="screen-options">
-                <div className="bot-screen-buttons-container">
-                  <button className="screen-button" onClick={ () => { this.setState({ flip: !this.state.flip }); } }><span style={{ fontSize: '17px' }} className='material-icons'>attach_file</span> add files ({fileListCount})</button>
+              <span className={scheme_style.wholeScreenButTitle} style={{ display: screenContentDisplayCSS }}>
+                <input className="inputrow" value={this.state.name} onChange={ this.handleInput } name="name" placeholder="screen name" title={this.state.text} />
+                <textarea spellCheck={false} className="inputrow" value={this.state.text} onChange={ this.handleInput } placeholder="Screen content in bot" name="text" />
+                <div className="fields_container">
+                  <input className="bot-screen-input child_field" value={this.state.screen_var} type="text" onChange={ this.handleInput } name="screen_var" placeholder="Variable" title="Set user variable"/>
+                  <div>&nbsp;=&nbsp;</div>
+                  <input className="bot-screen-input child_field" value={this.state.screen_val} type="text" onChange={ this.handleInput } name="screen_val" placeholder="Value" title="To this value"/>
                 </div>
-                <button className="add-child-screen btn" onClick={ () => { this.tester(this.props.obj._id) } }>add child screen</button>
-              </div>
+
+                <div className="fields_container">
+                  <input className="bot-screen-input child_field" value={this.state.varname} type="text" onChange={ this.handleInput } name="varname" placeholder="text input in variable" title="All user input gets in this variable" />
+                  <select className="bot-screen-input child_field" value={this.state.module} onChange={ this.handleInput } name="module" title="Show this module instead of screen content">
+                    {this.modulesList()}
+                  </select>
+                </div>
+                <div className="fields_container">
+                  <input className="bot-screen-input child_field" type="text" value={this.state.dlgflw_intent} onChange={ this.handleInput } name="dlgflw_intent" placeholder="Dialogflow intent" title="Display this screen as intent response"/>
+                  <input className="bot-screen-input child_field" type="text" value={this.state.next_screen} onChange={ this.handleInput } name="next_screen" placeholder="Next screen name" title="Display next screen immediately"/>
+                </div>
+                <div className="buttons">
+                  <ul className="buttons_row">
+                    { this.ButtonsList() }
+                  </ul>
+                  <button className={scheme_style.add_button_row} onClick={ () => { this.addButtonNewRow() } }>+</button>
+                  { (!this.state.cancel)
+                    ? <React.Fragment>
+                      <div className={scheme_style.AddButton}>
+                        <input placeholder="Button name" className={scheme_style.btnName} value={this.state.btnName} onChange={ this.handleInput } type="text" name="btnName"/>
+                        <button className={scheme_style.done_screen_files} onClick={ this.toggleDestinationSelection }>Destination</button>
+                        {(this.state.showDestinationSreens)
+                          ? <select size="5" onChange={ this.handleInput } value={this.state.btnDest} className={scheme_style.button_data} name="btnDest">
+                            { this.ScreensAsSelectOptions() }
+                          </select>
+                          : null}
+
+                        <input placeholder="URL" value={this.state.btnUrl} name="btnUrl" onChange={ this.handleInput } className={scheme_style.btnName} type="text"/>
+                        <input placeholder="Button payload" value={this.state.btnPayload} name="btnPayload" onChange={ this.handleInput } className={scheme_style.btnName} type="text"/>
+                        <div className="fields_container">
+                          <input className="bot-screen-input child_field" type="text" value={this.state.btnRow} onChange={ this.handleInput } name="btnRow" placeholder="Row" title="0-based row position"/>
+                          <input className="bot-screen-input child_field" type="text" value={this.state.btnIndex} onChange={ this.handleInput } name="btnIndex" placeholder="Index" title="0-based position in row"/>
+                        </div>
+                        <div>
+                          <button className={scheme_style.AddButtonSave} onClick={ this.saveBtn }>save</button>
+                          <button className={scheme_style.AddButtonSave + ' ' + scheme_style.AddButtonCancel} onClick={ this.cancelBtnOpts }>cancel</button>
+                        </div>
+                      </div>
+                    </React.Fragment>
+                    : null}
+                </div>
+                <div className="screen-options">
+                  <div className="bot-screen-buttons-container">
+                    <button className="screen-button" onClick={ () => { this.setState({ flip: !flip }); } }><span style={{ fontSize: '17px' }} className='material-icons'>attach_file</span> add files ({fileListCount})</button>
+                  </div>
+                  <button title='Let your bot tell something more' className="add-child-screen btn" onClick={ () => { this.props.addScreen(this.props.obj) } }>add child screen</button>
+                </div>
+              </span>
             </div>
 
             <div className="back">
@@ -422,7 +422,7 @@ class MainScreen extends React.Component {
               <div className="files-list">
                 <ul className="inputrow">{ this.fileList() }</ul>
               </div>
-              <button className={scheme_style.done_screen_files} onClick={ () => { this.setState({ flip: !this.state.flip }); } }>done</button>
+              <button className={scheme_style.done_screen_files} onClick={ () => { this.setState({ flip: !flip }); } }>done</button>
             </div>
           </div>
         </div>

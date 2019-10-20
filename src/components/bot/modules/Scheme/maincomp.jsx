@@ -7,7 +7,7 @@ const utils = require('./../../../../utils');
 
 const default_screen = [{
   _id: Date.now(),
-  name: '',
+  name: 'First screen',
   text: '',
   parent: 0,
   payload: '',
@@ -23,7 +23,7 @@ class MainComp extends React.Component {
       loading: true
     };
     this.getScreensData = this.getScreensData.bind(this);
-    this.add = this.add.bind(this);
+    this.addScreen = this.addScreen.bind(this);
     this.deleteScreen = this.deleteScreen.bind(this);
     this.data = [];
   }
@@ -75,17 +75,21 @@ class MainComp extends React.Component {
     this.data = data;
     this.setState({ data: this.data });
   }
-
-  add (parent) {
+  addScreen (parent_screen) {
     let obj = {
       _id: Date.now(),
-      parent: parent,
-      name: 'New screen',
+      parent: parent_screen._id,
+      name: 'New screen ' + this.data.length.toString(),
       varname: '',
       text: '',
       screen_val: '',
       screen_var: ''
     };
+
+    this.data.forEach(element => {
+      if (element._id === parent_screen._id)
+        element.name = 'yes parent';
+    });
     this.data.unshift(obj);
     this.setState({ data: this.data })
   }
@@ -99,9 +103,8 @@ class MainComp extends React.Component {
           child_screens = <ul>
             { this.createList(data, item._id) }
           </ul>
-
         return <li className={scheme_style.screen} key={item._id}>
-          <a><MainScreen obj={item} store={this.data} add={this.add} deleteScreen={this.deleteScreen} bot={this.props.bot}/></a>
+          <a><MainScreen obj={item} store={this.data} addScreen={this.addScreen} deleteScreen={this.deleteScreen} bot={this.props.bot}/></a>
           {child_screens}
         </li>
       }
