@@ -13,6 +13,7 @@ const default_screen = [{
   parent: 0,
   payload: '',
   media: null,
+  main: true,
   buttons: []
 }];
 
