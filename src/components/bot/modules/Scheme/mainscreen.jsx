@@ -1,9 +1,10 @@
 import React from 'react';
 import { post } from 'axios';
-import scheme_style from '../../../../css/scheme.css';
+import scheme_style from 'root/css/scheme.css';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 const url = './data/scheme.php';
 const randomnumber = () => Math.floor(Math.random() * (10000 - 1 + 1)) + 1 + '.' + Math.floor(Math.random() * (10000 - 1 + 1)) + 1;
-
 const setStore = (id, prop, data, store) => {
   for (let key in store)
     if (store[key]._id === id) {
@@ -49,6 +50,7 @@ class MainScreen extends React.Component {
     super(props);
     this.state = {
       flip: false,
+      main: props.obj.main,
       screen: props.obj,
       name: props.obj.name,
       varname: props.obj.varname,
@@ -85,6 +87,7 @@ class MainScreen extends React.Component {
 
   componentWillReceiveProps () {
     this.setState({
+      main: this.props.obj.main,
       boxSize: null,
       screenContentDisplayCSS: null
     })
@@ -137,9 +140,16 @@ class MainScreen extends React.Component {
     return post_resuls;
   }
 
-  handleInput (e) {
-    let value = e.target.value;
-    let name = e.target.name;
+  handleCheckbox (name) {
+    return event => {
+      this.props.setMainScreen(this.state.screen._id, event.target.checked);
+      // this.setState({ [name]: event.target.checked });
+    }
+  };
+
+  handleInput (event) {
+    let value = event.target.value;
+    let name = event.target.name;
     let stateVar = {};
     stateVar[name] = value;
     this.setState(stateVar,
@@ -335,8 +345,8 @@ class MainScreen extends React.Component {
   }
 
   render () {
-    let { boxSize, screenContentDisplayCSS, flip } = this.state;
-    let main = (this.props.obj.parent === 0);
+    let { main, boxSize, screenContentDisplayCSS, flip } = this.state;
+    // let main = (this.props.obj.parent === 0);
     let fileListCount = this.fileListCount();
 
     return (
@@ -353,6 +363,14 @@ class MainScreen extends React.Component {
                 </div>
               </div>
               <span className={scheme_style.wholeScreenButTitle} style={{ display: screenContentDisplayCSS }}>
+
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={this.state.main} onChange={this.handleCheckbox('main')} value="1" color="default" style={ { padding: '0px', paddingLeft: '11px' } }/>
+                  }
+                  label="This is a first screen"
+                />
+
                 <input className="inputrow" value={this.state.name} onChange={ this.handleInput } name="name" placeholder="screen name" title={this.state.text} />
                 <textarea spellCheck={false} className="inputrow" value={this.state.text} onChange={ this.handleInput } placeholder="Screen content in bot" name="text" />
                 <div className="fields_container">
@@ -403,7 +421,7 @@ class MainScreen extends React.Component {
                 </div>
                 <div className="screen-options">
                   <div className="bot-screen-buttons-container">
-                    <button className="screen-button" onClick={ () => { this.setState({ flip: !flip }); } }><span style={{ fontSize: '17px' }} className='material-icons'>attach_file</span> add files ({fileListCount})</button>
+                    <button className="screen-button" onClick={ () => { this.setState({ flip: !flip }); } }><span style={{ fontSize: '17px' }} className='material-icons'>attach_file</span>attachment ({fileListCount})</button>
                   </div>
                   <button title='Let your bot tell something more' className="add-child-screen btn" onClick={ () => { this.props.addScreen(this.props.obj) } }>add child screen</button>
                 </div>

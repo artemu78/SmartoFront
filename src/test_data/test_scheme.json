@@ -1,0 +1,313 @@
+[
+	{
+		"_id": 1567074361684,
+		"name": "First",
+		"text": "Привет! Я ваш личный косультант по удобной и красивой обуви в магазине KARI",
+		"parent": 0,
+		"varname": null,
+		"module": null,
+		"screen_var": null,
+		"screen_val": null,
+		"dlgflw_intent": null,
+		"next_screen": null,
+		"main": 1,
+		"media": null,
+		"buttons": [
+			{
+				"_id": 3,
+				"row": 1,
+				"text": "Где ближайший магазин",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/shops/",
+				"payload": ""
+			},
+			{
+				"_id": 2,
+				"row": 0,
+				"text": "Хочу купон на 500 рублей",
+				"dest": 1567152674102,
+				"index": 0,
+				"url": "",
+				"payload": ""
+			},
+			{
+				"_id": 4,
+				"row": 2,
+				"text": "Расскажи про актуальные акции",
+				"dest": 1567153159104,
+				"index": 0,
+				"url": "",
+				"payload": ""
+			},
+			{
+				"_id": 1,
+				"row": 0,
+				"text": "Выбрать обувь",
+				"dest": 1567074665889,
+				"index": 2,
+				"url": "",
+				"payload": ""
+			}
+		]
+	},
+	{
+		"_id": 1567074665889,
+		"name": "Consult",
+		"text": "Чтобы посоветовать вам обувь, подскажите для каких активностей вам нужна обувь?",
+		"parent": 1567074361684,
+		"varname": "",
+		"module": null,
+		"screen_var": "",
+		"screen_val": "",
+		"dlgflw_intent": null,
+		"next_screen": null,
+		"main": 0,
+		"media": null,
+		"buttons": [
+			{
+				"_id": 3,
+				"row": 0,
+				"text": "Для прогулок",
+				"dest": 1567151992000,
+				"index": 2,
+				"url": "",
+				"payload": ""
+			},
+			{
+				"_id": 4,
+				"row": 1,
+				"text": "Для офиса",
+				"dest": 1567154317511,
+				"index": 0,
+				"url": "",
+				"payload": ""
+			},
+			{
+				"_id": 5,
+				"row": 2,
+				"text": "Для активных прогулок и спорта",
+				"dest": 1567074785593,
+				"index": 0,
+				"url": "",
+				"payload": ""
+			}
+		]
+	},
+	{
+		"_id": 1567074785593,
+		"name": "Занятия спортом",
+		"text": "Если вам нужна спортивная обувь советуем обратить внимание на наш каталог кроссовок",
+		"parent": 1567074665889,
+		"varname": "",
+		"module": null,
+		"screen_var": "",
+		"screen_val": "",
+		"dlgflw_intent": null,
+		"next_screen": null,
+		"main": 0,
+		"media": null,
+		"buttons": [
+			{
+				"_id": 2,
+				"row": 1,
+				"text": "Женские кеды",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/zhenshchinam/zhenskaya-obuv/kedy/",
+				"payload": ""
+			},
+			{
+				"_id": 3,
+				"row": 2,
+				"text": "Женские сникерсы",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/zhenshchinam/zhenskaya-obuv/snikersy/",
+				"payload": ""
+			},
+			{
+				"_id": 4,
+				"row": 3,
+				"text": "Женская спортивная обувь",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/zhenshchinam/zhenskaya-obuv/sportivnaya-obuv/",
+				"payload": ""
+			},
+			{
+				"_id": 5,
+				"row": 4,
+				"text": "Кроссовки мужские",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/muzhchinam/muzhskaya-obuv/krossovki/",
+				"payload": ""
+			},
+			{
+				"_id": 6,
+				"row": 5,
+				"text": "Мужская спортивная обувь",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/muzhchinam/muzhskaya-obuv/sportivnaya-obuv/",
+				"payload": ""
+			},
+			{
+				"_id": 1,
+				"row": 0,
+				"text": "Кроссовки женские",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/zhenshchinam/zhenskaya-obuv/krossovki/",
+				"payload": ""
+			}
+		]
+	},
+	{
+		"_id": 1567151992000,
+		"name": "Прогулочная",
+		"text": "Если вам нужна обувь для прогулок советуем обратить внимание на это",
+		"parent": 1567074665889,
+		"varname": "",
+		"module": null,
+		"screen_var": "",
+		"screen_val": "",
+		"dlgflw_intent": null,
+		"next_screen": null,
+		"main": 0,
+		"media": null,
+		"buttons": [
+			{
+				"_id": 1,
+				"row": 0,
+				"text": "Ботинки мужские",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/muzhchinam/muzhskaya-obuv/botinki/",
+				"payload": ""
+			},
+			{
+				"_id": 4,
+				"row": 3,
+				"text": "Ботильоны женские",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/zhenshchinam/zhenskaya-obuv/botilony/",
+				"payload": ""
+			},
+			{
+				"_id": 3,
+				"row": 2,
+				"text": "Босоножки женские",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/zhenshchinam/zhenskaya-obuv/bosonozhki/",
+				"payload": ""
+			}
+		]
+	},
+	{
+		"_id": 1567152674102,
+		"name": "Купон 500 рублей",
+		"text": "Ох по секрету дам, но только потому что вы мне понравились)\nПодскажите вашу актуальную почту:",
+		"parent": 1567074361684,
+		"varname": "email",
+		"module": 12,
+		"screen_var": "",
+		"screen_val": "",
+		"dlgflw_intent": null,
+		"next_screen": "emailansswer",
+		"main": 0,
+		"media": [],
+		"buttons": []
+	},
+	{
+		"_id": 1567153159104,
+		"name": "Акции KARI",
+		"text": "Вот какие акции сейчас проходят в нашем магазине:",
+		"parent": 1567074361684,
+		"varname": "",
+		"module": null,
+		"screen_var": "",
+		"screen_val": "",
+		"dlgflw_intent": null,
+		"next_screen": null,
+		"main": 0,
+		"media": [
+			{
+				"fileName": "1920x720e.jpg",
+				"newName": "z3kfdd3s1z4rpnzx1ejr.jpg"
+			}
+		],
+		"buttons": [
+			{
+				"_id": 2,
+				"row": 1,
+				"text": "Какую обувь посоветуешь?",
+				"dest": 1567074665889,
+				"index": 0,
+				"url": "",
+				"payload": ""
+			},
+			{
+				"_id": 1,
+				"row": 0,
+				"text": "Где ближайший магазин?",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/shops/",
+				"payload": ""
+			}
+		]
+	},
+	{
+		"_id": 1567154317511,
+		"name": "Офисная обувь",
+		"text": "Тут ссылки на каталоги обуви в которой вам будет очень удобно на работе ",
+		"parent": 1567074665889,
+		"varname": "",
+		"module": null,
+		"screen_var": "",
+		"screen_val": "",
+		"dlgflw_intent": null,
+		"next_screen": null,
+		"main": 0,
+		"media": null,
+		"buttons": [
+			{
+				"_id": 2,
+				"row": 1,
+				"text": "Мужские туфли",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/muzhchinam/muzhskaya-obuv/tufli/",
+				"payload": ""
+			},
+			{
+				"_id": 1,
+				"row": 0,
+				"text": "Женские туфли",
+				"dest": "",
+				"index": 0,
+				"url": "https://kari.com/ru/zhenshchinam/zhenskaya-obuv/tufli/",
+				"payload": ""
+			}
+		]
+	},
+	{
+		"_id": 1568908203688,
+		"name": "emailansswer",
+		"text": "Спасибо, мы вышлем промокод на почту.",
+		"parent": 1567152674102,
+		"varname": "",
+		"module": 12,
+		"screen_var": "",
+		"screen_val": "",
+		"dlgflw_intent": null,
+		"next_screen": null,
+		"main": 0,
+		"media": null,
+		"buttons": []
+	}
+]

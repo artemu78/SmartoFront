@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import MainScreen from './mainscreen'
-import scheme_style from '../../../../css/scheme.css';
+import scheme_style from 'root/css/scheme.css';
+import test_scheme from 'root/test_data/test_scheme';
 const url = './data/scheme.php';
-const utils = require('./../../../../utils');
+const utils = require('root/utils');
 
 const default_screen = [{
   _id: Date.now(),
@@ -25,6 +26,7 @@ class MainComp extends React.Component {
     this.getScreensData = this.getScreensData.bind(this);
     this.addScreen = this.addScreen.bind(this);
     this.deleteScreen = this.deleteScreen.bind(this);
+    this.setMainScreen = this.setMainScreen.bind(this);
     this.data = [];
   }
 
@@ -33,7 +35,7 @@ class MainComp extends React.Component {
     if (window.location.hostname !== 'localhost')
       this.getDataFromServer();
     else {
-      let scheme = default_screen;
+      let scheme = test_scheme;
       this.data = scheme;
       this.setState({ data: scheme, loading: false, files: [], save: 'Save', disable: false });
     }
@@ -61,6 +63,24 @@ class MainComp extends React.Component {
       });
   }
 
+  setMainScreen (screenId, setChecked) {
+    const { data } = this.state;
+    let yesRemoveMain = true;
+    let atLeastOneScreenIsMain = false;
+    const screensList = data.map(item => {
+      const setScreenMain = item._id === screenId && setChecked;
+      item.main = setScreenMain;
+      atLeastOneScreenIsMain = atLeastOneScreenIsMain || setScreenMain;
+      return item;
+    });
+    if (!atLeastOneScreenIsMain)
+      yesRemoveMain = window.confirm('No screen set as first. Bot will be in silent mode. Are you sure?');
+    if (!yesRemoveMain)
+      return;
+    this.data = screensList;
+    this.setState({ data: this.data })
+  }
+
   getScreensData () {
     return [this.data, this.botId];
   }
@@ -75,6 +95,7 @@ class MainComp extends React.Component {
     this.data = data;
     this.setState({ data: this.data });
   }
+
   addScreen (parent_screen) {
     let obj = {
       _id: Date.now(),
@@ -104,7 +125,7 @@ class MainComp extends React.Component {
             { this.createList(data, item._id) }
           </ul>
         return <li className={scheme_style.screen} key={item._id}>
-          <a><MainScreen obj={item} store={this.data} addScreen={this.addScreen} deleteScreen={this.deleteScreen} bot={this.props.bot}/></a>
+          <a><MainScreen obj={item} store={this.data} addScreen={this.addScreen} deleteScreen={this.deleteScreen} bot={this.props.bot} setMainScreen={this.setMainScreen}/></a>
           {child_screens}
         </li>
       }
