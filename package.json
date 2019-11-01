@@ -1,6 +1,6 @@
 {
   "name": "Smartoboto",
-  "version": "0.1.78",
+  "version": "0.1.79",
   "private": true,
   "dependencies": {
     "@babel/core": "7.1.6",
