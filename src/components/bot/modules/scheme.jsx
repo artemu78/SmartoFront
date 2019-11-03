@@ -1,9 +1,9 @@
 import React from 'react';
 import { post } from 'axios';
 import MainComp from './Scheme/maincomp';
-import scheme_style from '../../../css/scheme.css';
+import scheme_style from 'root/css/scheme.css';
 const { connect } = require('react-redux');
-const utils = require('./../../../utils');
+const utils = require('root/utils');
 const url = './data/scheme.php';
 
 class DivSRef extends React.Component {

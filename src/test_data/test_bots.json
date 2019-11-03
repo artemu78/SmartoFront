@@ -23,7 +23,8 @@
 				1,
 				7,
 				12,
-				13
+				13,
+				14
 			],
 			"dialogflow": "",
 			"widget": "KS61O61N9TGQ",
@@ -1207,6 +1208,11 @@
 			"id": "13",
 			"name": "Bitrix integration",
 			"visual": "0"
+		},
+		{
+			"id": "14",
+			"name": "Events",
+			"visual": "1"
 		}
 	]
 }

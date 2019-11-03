@@ -1,4 +1,5 @@
 export default (state = {
+  schemes: [],
   show_menu: false,
   show_content: false,
   header: false,
@@ -75,6 +76,11 @@ export default (state = {
         show_mybots: true,
         show_payment: true,
         show_regsplash: true });
+      break;
+    case 'SET_BOT_SCHEME':
+      let schemes = Object.assign({}, state.schemes);
+      schemes[action.bot] = action.scheme;
+      new_st = Object.assign({}, state, { schemes });
       break;
     default:
       new_st = Object.assign({}, all_false, state);

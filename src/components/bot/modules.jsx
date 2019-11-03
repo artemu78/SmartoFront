@@ -7,7 +7,15 @@ import MaterialsModule from './modules/materials.jsx';
 import ThemesModule from './modules/themes.jsx';
 import SchemeModule from './modules/scheme.jsx';
 import QAScreensModule from './modules/qa_screens.jsx';
-import css from './../../css/menu.css';
+import Events from './modules/events.jsx';
+import css from 'root/css/menu.css';
+// import AccountTreeIcon from '@material-ui/icons/AccountTree';
+
+const icons = {
+  'About': 'info',
+  'Scheme': 'device_hub',
+  'Events': 'dns'
+};
 
 class BotmModules extends Component {
   constructor () {
@@ -28,46 +36,49 @@ class BotmModules extends Component {
       this.setState({ selected: item });
     }} >
       <div className={css.menu_item_text}>
+        <i className="material-icons">{icons[name]}</i>&nbsp;
         {name}
       </div>
     </div>;
   }
 
   render () {
+    const { bot } = this.props;
     let selected_module;
     switch (this.state.selected) {
       case 2:
-        selected_module = <ContentModule bot={this.props.bot} />;
+        selected_module = <ContentModule bot={bot} />;
         break;
       case 1:
-        selected_module = <MapModule bot={this.props.bot} />;
+        selected_module = <MapModule bot={bot} />;
         break;
       case 3:
-        selected_module = <QuestionModule bot={this.props.bot} />;
+        selected_module = <QuestionModule bot={bot} />;
         break;
       case 4:
-        selected_module = <ProgrammsModule bot={this.props.bot} />;
+        selected_module = <ProgrammsModule bot={bot} />;
         break;
       case 5:
-        selected_module = <MaterialsModule bot={this.props.bot} />;
+        selected_module = <MaterialsModule bot={bot} />;
         break;
       case 6:
-        selected_module = <ThemesModule bot={this.props.bot} />;
+        selected_module = <ThemesModule bot={bot} />;
         break;
       case 7:
-        selected_module = <SchemeModule bot={this.props.bot} />;
+        selected_module = <SchemeModule bot={bot} />;
         break;
       case 11:
-        selected_module = <QAScreensModule bot={this.props.bot} />;
+        selected_module = <QAScreensModule bot={bot} />;
+        break;
+      case 14:
+        selected_module = <Events bot={bot} />;
         break;
       default:
         selected_module = null;
         break;
     }
 
-    let modules_html = this.props.bot.modules.map((item, i) => {
-      if (this.modules[item].visual == 0)
-        return null;
+    let modules_html = bot.modules.filter(item => this.modules[item].visual != 0).map((item, i) => {
       return this.item_template(item, i);
     });
     return (

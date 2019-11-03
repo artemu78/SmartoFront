@@ -52,24 +52,24 @@ class MainScreen extends React.Component {
       flip: false,
       main: props.obj.main,
       screen: props.obj,
-      name: props.obj.name,
-      varname: props.obj.varname,
-      text: props.obj.text,
-      screen_val: props.obj.screen_val,
-      screen_var: props.obj.screen_var,
+      name: props.obj.name || '',
+      varname: props.obj.varname || '',
+      text: props.obj.text || '',
+      screen_val: props.obj.screen_val || '',
+      screen_var: props.obj.screen_var || '',
       buttons: props.obj.buttons || [],
-      btnName: '',
-      btnDest: '',
-      btnUrl: '',
+      btnName: '' || '',
+      btnDest: '' || '',
+      btnUrl: '' || '',
       cancel: true,
       showDestinationSreens: false,
       file: null,
       progres: null,
       percent: 0,
-      module: props.obj.module,
+      module: props.obj.module || '',
       files: ((props.obj.media === undefined || props.obj.media === null) ? [] : props.obj.media),
-      dlgflw_intent: props.obj.dlgflw_intent,
-      next_screen: props.obj.next_screen,
+      dlgflw_intent: props.obj.dlgflw_intent || '',
+      next_screen: props.obj.next_screen || '',
       screenContentDisplayCSS: null
     };
     this.toggleDestinationSelection = this.toggleDestinationSelection.bind(this);
@@ -366,7 +366,7 @@ class MainScreen extends React.Component {
 
                 <FormControlLabel
                   control={
-                    <Checkbox checked={this.state.main} onChange={this.handleCheckbox('main')} value="1" color="default" style={ { padding: '0px', paddingLeft: '11px' } }/>
+                    <Checkbox checked={!!+this.state.main} onChange={this.handleCheckbox('main')} value="1" color="default" style={ { padding: '0px', paddingLeft: '11px' } }/>
                   }
                   label="This is a first screen"
                 />

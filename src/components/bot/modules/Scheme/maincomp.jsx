@@ -3,6 +3,7 @@ import axios from 'axios';
 import MainScreen from './mainscreen'
 import scheme_style from 'root/css/scheme.css';
 import test_scheme from 'root/test_data/test_scheme';
+const { connect } = require('react-redux');
 const url = './data/scheme.php';
 const utils = require('root/utils');
 
@@ -38,13 +39,16 @@ class MainComp extends React.Component {
     else {
       let scheme = test_scheme;
       this.data = scheme;
+      const action_data = { type: 'SET_BOT_SCHEME', bot: this.botId, scheme };
+      this.props.dispatch(action_data)
       this.setState({ data: scheme, loading: false, files: [], save: 'Save', disable: false });
     }
   }
 
   getDataFromServer () {
     const formData = new window.FormData();
-    formData.append('b', this.props.bot.id);
+    const bot_id = this.props.bot.id;
+    formData.append('b', bot_id);
     formData.append('l', utils.getCookie('l'));
     formData.append('oper', 'get');
     axios.post(url, formData)
@@ -57,6 +61,8 @@ class MainComp extends React.Component {
         if (data.length === 0)
           data = default_screen;
         this.data = data;
+        const action_data = { type: 'SET_BOT_SCHEME', bot: bot_id, scheme: data };
+        this.props.dispatch(action_data)
         this.setState({ data, loading: false, files: [], save: 'Save', disable: false });
       })
       .catch(error => {
@@ -153,4 +159,4 @@ class MainComp extends React.Component {
   }
 }
 
-export default MainComp;
+export default connect()(MainComp);

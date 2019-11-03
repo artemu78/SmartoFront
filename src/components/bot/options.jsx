@@ -126,7 +126,7 @@ class BotOptions extends Component {
   }
 
   openVKAuth () {
-    window.open('https://oauth.vk.com/authorize?client_id=7134236&display=page&redirect_uri=https://smartobotobots.ru/vk_callback/&scope=groups&response_type=code&state=usr__' + this.props.bot.id, 'Smartoboto Vkontakte settings', 'menubar=0,toolbar=0,status=0,location=0,centerscreen=1');
+    window.open('https://oauth.vk.com/authorize?client_id=7134236&display=page&redirect_uri=https://smartobotobots.ru/vk_callback/&scope=groups,wall&response_type=code&state=usr__' + this.props.bot.id, 'Smartoboto Vkontakte settings', 'menubar=0,toolbar=0,status=0,location=0,centerscreen=1');
     window.webix.message({
       text: 'Reload page to see new settings',
       type: 'info',
