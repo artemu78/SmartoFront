@@ -423,14 +423,20 @@ box-shadow: none;
   right: 0px;
   width: 200px;
   cursor: pointer;
-  background: green;
+  background: #484DCF;
+}
+:local(.done_screen_files.fixed):hover {
+  background-color: #282DBF;
 }
 
 :local(.bot_screens_button) {
   cursor: pointer;
   border-radius: 5px;
   color: #fff;
-  background: green;
+  background: #484DCF;
+}
+:local(.bot_screens_button):hover {
+  background-color: #282DBF;
 }
 
 :local(.screen_control_buttons) {

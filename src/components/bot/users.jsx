@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,6 +16,11 @@ import tm_avatar from 'root/img/social/35x35/tm.png';
 import web_avatar from 'root/img/social/35x35/web.png';
 const utils = require('root/utils.js');
 const save_url = 'data/saveoptions.php';
+const StyledTableCell = withStyles(theme => ({
+  head: {
+    fontSize: '1rem'
+  }
+}))(TableCell);
 
 class Users extends Component {
   constructor (props) {
@@ -128,9 +134,9 @@ class Users extends Component {
     return <Table>
       <TableHead>
         <TableRow className={style.usersHeader}>
-          <TableCell>Date/time</TableCell>
-          <TableCell>Visitor</TableCell>
-          <TableCell>Bot</TableCell>
+          <StyledTableCell>Date/time</StyledTableCell>
+          <StyledTableCell>Visitor</StyledTableCell>
+          <StyledTableCell>Bot</StyledTableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -165,12 +171,18 @@ class Users extends Component {
     return (
       <div className="bot_options">
         <Table>
+          <colgroup>
+            <col width="20%" />
+            <col width="35%" />
+            <col width="35%" />
+            <col width="10%" />
+          </colgroup>
           <TableHead>
             <TableRow className={style.usersHeader}>
-              <TableCell>Registration</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Answers</TableCell>
-              <TableCell>Platform</TableCell>
+              <StyledTableCell>Registration</StyledTableCell>
+              <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell>Answers</StyledTableCell>
+              <StyledTableCell>Platform</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
