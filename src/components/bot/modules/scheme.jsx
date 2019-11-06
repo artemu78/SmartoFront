@@ -30,7 +30,6 @@ class DivSRef extends React.Component {
   saveBtnClick () {
     const bot_id = this.props.bot.id;
     let dataSave = this.props.schemes[bot_id];
-    console.log(this.props.schemes, 'scheme');
     this.setState({ disable: true });
     let config = {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -41,7 +40,7 @@ class DivSRef extends React.Component {
     formData.append('oper', 'screens');
     formData.append('b', bot_id);
     formData.append('l', utils.getCookie('l'));
-    formData.append('screens', JSON.stringify(dataSave[0]));
+    formData.append('screens', JSON.stringify(dataSave));
     this.setState({ save: 'Save in process ...' });
     this.sendSchemeData(formData, config);
   }
