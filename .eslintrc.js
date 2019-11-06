@@ -15,6 +15,7 @@ module.exports = {
 		"curly": ["warn", "multi"],
 		"react/jsx-uses-react": "error",
 		"react/jsx-uses-vars": "error",
-		"no-debugger": "warn"
+		"no-debugger": "warn",
+		"no-unused-vars": "off"
     }
 };

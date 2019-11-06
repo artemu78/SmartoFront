@@ -5,13 +5,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 const url = './data/scheme.php';
 const randomnumber = () => Math.floor(Math.random() * (10000 - 1 + 1)) + 1 + '.' + Math.floor(Math.random() * (10000 - 1 + 1)) + 1;
-const setStore = (id, prop, data, store) => {
-  for (let key in store)
-    if (store[key]._id === id) {
-      store[key][prop] = data;
-      break;
-    }
-}
 
 const flatDeep = (arr) => {
   let res = arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flatDeep(val)) : acc.concat(val), []);
@@ -80,9 +73,19 @@ class MainScreen extends React.Component {
     this.delFile = this.delFile.bind(this);
     this.minimizeScreen = this.minimizeScreen.bind(this);
     this.maximizeScreen = this.maximizeScreen.bind(this);
-
+    this.setStore = this.setStore.bind(this);
     if (this.props.store)
       this.state.btnDest = this.props.store[0]._id;
+  }
+
+  setStore (id, prop, data, store) {
+    for (let key in store)
+      if (store[key]._id === id) {
+        store[key][prop] = data;
+        break;
+      }
+    const action_data = { type: 'SET_BOT_SCHEME', bot: this.props.bot.id, scheme: store };
+    this.props.dispatch(action_data);
   }
 
   componentWillReceiveProps () {
@@ -97,7 +100,7 @@ class MainScreen extends React.Component {
     if (!window.confirm('Delete attach?')) return;
     let files = [...this.state.files];
     files.splice(i, 1);
-    setStore(this.props.obj._id, 'media', files, this.props.store);
+    this.setStore(this.props.obj._id, 'media', files, this.props.store);
     this.setState({ files: files });
   }
   onChange (e) {
@@ -115,7 +118,7 @@ class MainScreen extends React.Component {
       let files = [...this.state.files];
       files.push(response.data);
       this.setState({ progres: null });
-      setStore(this.props.obj._id, 'media', files, this.props.store);
+      this.setStore(this.props.obj._id, 'media', files, this.props.store);
       this.setState({ files: files });
     })
   }
@@ -154,7 +157,7 @@ class MainScreen extends React.Component {
     stateVar[name] = value;
     this.setState(stateVar,
       () => {
-        setStore(this.props.obj._id, name, value, this.props.store);
+        this.setStore(this.props.obj._id, name, value, this.props.store);
       });
   }
 
@@ -188,7 +191,7 @@ class MainScreen extends React.Component {
 
     this.setState({ buttons: buttons },
       () => {
-        setStore(this.props.obj._id, 'buttons', buttons, this.props.store);
+        this.setStore(this.props.obj._id, 'buttons', buttons, this.props.store);
         this.cancelBtnOpts();
       });
   }
@@ -242,7 +245,7 @@ class MainScreen extends React.Component {
   delButton (id) {
     let buttons = [...this.state.buttons];
     let btn = buttons.filter((item) => item._id !== id);
-    this.setState({ buttons: btn }, () => { setStore(this.props.obj._id, 'buttons', btn, this.props.store); });
+    this.setState({ buttons: btn }, () => { this.setStore(this.props.obj._id, 'buttons', btn, this.props.store); });
   }
 
   ButtonsList () {

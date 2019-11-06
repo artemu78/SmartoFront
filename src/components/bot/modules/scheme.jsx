@@ -28,7 +28,9 @@ class DivSRef extends React.Component {
   }
 
   saveBtnClick () {
-    let dataSave = this.save.getScreensData();
+    const bot_id = this.props.bot.id;
+    let dataSave = this.props.schemes[bot_id];
+    console.log(this.props.schemes, 'scheme');
     this.setState({ disable: true });
     let config = {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -37,7 +39,7 @@ class DivSRef extends React.Component {
 
     let formData = new window.FormData();
     formData.append('oper', 'screens');
-    formData.append('b', this.props.bot.id);
+    formData.append('b', bot_id);
     formData.append('l', utils.getCookie('l'));
     formData.append('screens', JSON.stringify(dataSave[0]));
     this.setState({ save: 'Save in process ...' });
@@ -88,7 +90,7 @@ class DivSRef extends React.Component {
         </div>
         <div id="scroller-parent" ref='cont' style={{ width: '100%', height: '100%', overflow: 'auto', position: 'relative' }}>
           <div id="area" className={bot_screens_class}>
-            <MainComp ref={ instance => { this.save = instance; }} bot={this.props.bot}/>
+            <MainComp bot={this.props.bot}/>
           </div>
         </div>
       </React.Fragment>
@@ -98,7 +100,8 @@ class DivSRef extends React.Component {
 
 const mapStateToProps = state => ({
   show_mybots: state.show_mybots,
-  bot: state.bot
+  bot: state.bot,
+  schemes: state.schemes
 });
 
 export default connect(
