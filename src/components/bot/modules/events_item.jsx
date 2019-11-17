@@ -4,7 +4,7 @@ import React, {
 import {
   MenuItem,
   InputLabel,
-  // Checkbox,
+  Checkbox,
   Select
   // FormHelperText
 } from '@material-ui/core';
@@ -18,12 +18,14 @@ class EventItem extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      id: props.id,
       eventType: '',
       pollId: '',
       pollAnswerId: '',
       actionType: '',
       screenId: '',
-      pollAnswersItems: []
+      pollAnswersItems: [],
+      active: false
     }
   }
 
@@ -33,13 +35,19 @@ class EventItem extends Component {
 
   handleSelect (name) {
     return (event) => {
+      let stateShadow = { ...this.state };
       this.setState({ [name]: event.target.value });
+      stateShadow[name] = event.target.value;
+      this.props.setEventItem(stateShadow);
     }
   };
 
   handleCheck (name) {
     return event => {
+      let stateShadow = { ...this.state };
       this.setState({ [name]: event.target.checked });
+      stateShadow[name] = event.target.checked;
+      this.props.setEventItem(stateShadow);
     }
   };
 
@@ -114,12 +122,18 @@ class EventItem extends Component {
       </Select>
     </div>;
 
-    return <div style={{ display: 'flex' }}>
+    const activateCheckbox = <div className = { style.event_item }>
+      <InputLabel>Active</InputLabel>
+      <Checkbox color="default" onChange={this.handleCheck('active')}/>
+    </div>;
+
+    return <div id="zzz" style={{ display: 'flex', padding: '20px 0px' }}>
       {eventTypeComponent}
       {eventType ? pollComponent : null}
       {pollId ? answersComponent : null}
       {pollAnswerId ? actionTypeComponent : null}
       {actionType ? screensComponent : null}
+      {screenId ? activateCheckbox : null}
     </div>
   }
 }

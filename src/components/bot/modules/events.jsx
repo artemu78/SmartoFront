@@ -12,10 +12,11 @@ import {
   Checkbox,
   Select,
   Button,
-  FormHelperText
+  FormHelperText,
+  Fab
 } from '@material-ui/core';
+import { Add, Save } from '@material-ui/icons';
 import test_polls from 'root/test_data/test_polls.json';
-import SaveIcon from '@material-ui/icons/Save';
 import EventItem from './events_item.jsx';
 const { connect } = require('react-redux');
 const utils = require('root/utils.js');
@@ -44,47 +45,28 @@ class Events extends Component {
       currentScreen0: '',
       currentActionType0: 'grp',
       currentPollAnswerId0: '',
-      eventIsActive0: false
+      eventIsActive0: false,
+      events: new Map()
     };
     this.handlePollsDataResponse = this.handlePollsDataResponse.bind(this);
+    this.setEventItem = this.setEventItem.bind(this);
+    this.saveEvents = this.saveEvents.bind(this);
+    this.addEvent = this.addEvent.bind(this);
+  }
+
+  setEventItem (obj) {
+    let { events } = this.state;
+    events.set(obj.id, obj);
   }
 
   cutText (str, len) {
     return str.length > len ? (str.substring(0, len - 2) + '...') : str;
   }
 
-  handleSelect (name) {
-    return event => {
-      this.setState({ [name]: event.target.value });
-    }
-  };
-
-  handleCheck (name) {
-    return event => {
-      this.setState({ [name]: event.target.checked });
-    }
-  };
-
-  handleSelectPoll (name) {
-    const handleFunc = this.handleSelect(name);
-    return event => {
-      const currentPollId = event.target.value;
-      const { pollsRawData } = this.state;
-      const currentPoll = pollsRawData.find(item => item.id == currentPollId);
-      if (currentPoll && currentPoll.data) {
-        const pollAnswersItems = currentPoll.data.map(answer => {
-          return <MenuItem value={answer.id} key={answer.id} title={answer.text}>{this.cutText(answer.text, 15)}</MenuItem>
-        });
-        this.setState({ pollAnswersItems });
-      }
-      handleFunc(event);
-    }
-  };
-
   handlePollsDataResponse (pollsData) {
     const pollsRawData = pollsData.data;
     const pollsItems = pollsRawData.map(poll => {
-      const pollName = this.cutText(poll.question, 15);
+      const pollName = this.cutText(poll.question, 25);
       return <MenuItem value={poll.id} key={poll.id}>{pollName}</MenuItem>;
     });
     this.setState({ pollsItems, pollsRawData });
@@ -109,31 +91,33 @@ class Events extends Component {
   }
 
   saveEvents () {
-    const { eventIsActive0, currentPollId0, currentActionType0, currentScreen0, currentPollAnswerId0 } = this.state;
+    const { events } = this.state;
     const request = {
       l: utils.getCookie('l'),
       b: this.props.bot.id,
       o: 'sevent',
-      data: [
-        {
-          active: eventIsActive0,
-          event: 'new_vote_poll',
-          data: {
-            poll: currentPollId0,
-            answer: currentPollAnswerId0
-          },
-          action: currentActionType0,
-          screen: currentScreen0
-        }
-      ]
+      data: Array.from(events.values())
     }
     utils.sendRequest(request, this.handlePollsDataResponse, save_url);
   }
 
+  addEvent () {
+    let { events } = this.state;
+    const event = {
+      id: (new Date()).getTime()
+    }
+    events.set(event.id, event);
+    this.setState({ events })
+  }
+
   render () {
-    const { eventIsActive0, currentPollId0, pollsItems, currentActionType0, currentScreen0, screensComponents, pollAnswersItems, currentPollAnswerId0, pollsRawData } = this.state;
+    const { eventIsActive0, currentPollId0, pollsItems, currentActionType0, currentScreen0, screensComponents, pollAnswersItems, currentPollAnswerId0, pollsRawData, events } = this.state;
+    let eventsComponents = [];
+    events.forEach(event => {
+      eventsComponents.push(<EventItem polls = { pollsRawData } id={event.id} setEventItem={this.setEventItem} key={event.id}/>);
+    });
     return <React.Fragment>
-      <Table>
+      {/* <Table>
         <colgroup>
           <col width="30%" />
           <col width="30%" />
@@ -178,10 +162,15 @@ class Events extends Component {
             </TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table> */}
       <br/>
-      <EventItem polls = { pollsRawData }/>
-      <Button variant="contained" size="large" color="primary" style={{ float: 'right' }} onClick={this.saveEvents}><SaveIcon />&nbsp;Save</Button>
+      { eventsComponents }
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Fab color="primary" aria-label="add" onClick={this.addEvent}>
+          <Add />
+        </Fab>
+        <Button variant="contained" size="large" color="primary" style={{ float: 'right' }} onClick={this.saveEvents}><Save />&nbsp;Save</Button>
+      </div>
     </React.Fragment>;
   }
 }
