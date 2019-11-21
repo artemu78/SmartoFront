@@ -1,16 +1,17 @@
 const fs = require('fs');
+const path = require('path');
 console.log('deploy.js files ' + new Date().toString());
 let new_files = [];
 let new_files_yandex = [];
 const remote_path = '/home/aehafgdz/public_html/smartoboto/';
 const remote_path_yandex = '/var/www/html/';
 
-fs.copyFileSync('build\\index.html', 'build\\lk.html');
+fs.copyFileSync(path.join('build', 'index.html'), path.join('build', 'lk.html'));
 
 // Get hashes from asset-manifest.json
-const hashes = JSON.parse(fs.readFileSync('build/asset-manifest.json', 'utf8'));
+const hashes = JSON.parse(fs.readFileSync(path.join('build', 'asset-manifest.json'), 'utf8'));
 for (let dest_file in hashes) {
-  let src = 'build/' + hashes[dest_file].substring(2);
+  let src = path.join('build', hashes[dest_file].substring(2));
   let this_is_map = src.split('.').pop() === 'map';
   let from = src.replace(new RegExp('/', 'g'), '\\');
   let to =  remote_path + hashes[dest_file].substring(2);
@@ -21,12 +22,12 @@ for (let dest_file in hashes) {
   }
 }
 new_files.push({
-		from: 'build\\index.html',
+		from: path.join('build', 'index.html'),
 		to: remote_path + 'index.html',
 	});
 	
 new_files_yandex.push({
-		from: 'build\\lk.html',
+		from: path.join('build', 'lk.html'),
 		to: remote_path_yandex + 'lk.html',
 	});
 	
