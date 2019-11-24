@@ -1,0 +1,17 @@
+{
+	"data": [
+        {
+            "id": "10",
+            "event": "new_vote_poll",
+            "bot": "67",
+            "screen": "1567074785593",
+            "user_id": "44",
+            "create_dt": "2019-11-24 10:11:41",
+            "poll": "11",
+            "answer": "1179815236",
+            "action": "cmnt",
+            "active": "1",
+            "event_id": "2147483647"
+        }
+	]
+}

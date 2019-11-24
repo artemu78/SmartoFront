@@ -10,9 +10,6 @@ import {
 } from '@material-ui/core';
 import style from 'root/css/events.css';
 const { connect } = require('react-redux');
-const allPossibleEvents = [
-  { id: 'new_vote_poll', name: 'New poll vote' }
-];
 
 class EventItem extends Component {
   constructor (props) {
@@ -25,10 +22,10 @@ class EventItem extends Component {
       actionType: '',
       screenId: '',
       pollAnswersItems: [],
-      active: false
+      active: false,
+      allPossibleEvents: props.allPossibleEvents
     }
   }
-
   cutText (str, len) {
     return str.length > len ? (str.substring(0, len - 2) + '...') : str;
   }
@@ -81,7 +78,7 @@ class EventItem extends Component {
   }
 
   render () {
-    const { eventType, pollId, pollAnswerId, actionType, screenId, pollAnswersItems } = this.state;
+    const { eventType, pollId, pollAnswerId, actionType, screenId, pollAnswersItems, allPossibleEvents, allPossibleActions } = this.state;
 
     const eventTypeComponent = <div className = { style.event_item }>
       <InputLabel>Event type</InputLabel>
