@@ -13,9 +13,9 @@ const hashes = JSON.parse(fs.readFileSync(path.join('build', 'asset-manifest.jso
 for (let dest_file in hashes) {
   let src = path.join('build', hashes[dest_file].substring(2));
   let this_is_map = src.split('.').pop() === 'map';
-  let from = src.replace(new RegExp('/', 'g'), '\\');
+  let from = src.replace(new RegExp('/', 'g'), path.sep);
   let to =  remote_path + hashes[dest_file].substring(2);
-  if (src.indexOf('static/') > -1 && !this_is_map)
+  if (src.indexOf('static'+path.sep) > -1 && !this_is_map)
   {
 	new_files.push({ from, to });
 	new_files_yandex.push({ from, to:  remote_path_yandex + hashes[dest_file].substring(2)});
