@@ -63,8 +63,10 @@ class Events extends Component {
     return str.length > len ? (str.substring(0, len - 2) + '...') : str;
   }
 
-  handlePollsDataResponse (pollsData) {
-    const pollsRawData = pollsData.data;
+  handlePollsDataResponse (pollsData = {}) {
+    const pollsRawData = pollsData && pollsData.data;
+    if (!pollsRawData)
+      return;
     const pollsItems = pollsRawData.map(poll => {
       const pollName = this.cutText(poll.question, 25);
       return <MenuItem value={poll.id} key={poll.id}>{pollName}</MenuItem>;
