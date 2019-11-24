@@ -130,12 +130,12 @@ class Events extends Component {
   }
 
   saveEvents () {
-    const { events } = this.state;
+    const { addEvents } = this.state;
     const request = {
       l: utils.getCookie('l'),
       b: this.props.bot.id,
       o: 'sevent',
-      data: Array.from(events.values())
+      data: Array.from(addEvents.values())
     }
     utils.sendRequest(request, this.handleSaveEventsResponse, save_url);
   }
