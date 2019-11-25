@@ -8,6 +8,10 @@ let remote_path_yandex = '/var/www/test/';
 
 const argv = process.argv.slice(2);
 const PROD_BUILD = argv.indexOf('--prod') !== -1;
+const passphrase = argv.find(item => item.startsWith('--passphrase'));
+const passphraseValue = passphrase && passphrase.split('=')[1].trim();
+console.log(passphraseValue, 'passphraseValue');
+console.log(passphraseraseValue, 'passphrase');
 if (PROD_BUILD) 
 	remote_path_yandex = '/var/www/html/';
 
@@ -20,7 +24,8 @@ for (let dest_file in hashes) {
   let this_is_map = src.split('.').pop() === 'map';
   let from = src.replace(new RegExp('/', 'g'), path.sep);
   let to =  remote_path + hashes[dest_file].substring(2);
-  if (src.indexOf('static'+path.sep) > -1 && !this_is_map)
+  const skipThisFile = (this_is_map && PROD_BUILD);
+  if (src.indexOf('static'+path.sep) > -1 && !skipThisFile)
   {
 	new_files.push({ from, to });
 	new_files_yandex.push({ from, to:  remote_path_yandex + hashes[dest_file].substring(2)});
@@ -39,25 +44,25 @@ new_files_yandex.push({
 
 let Client = require('ssh2-sftp-client');
 
-let sftp = new Client();
-sftp.connect({
-  host: 'smartoboto.com',
-  port: 22,
-  username: 'aehafgdz',
-  password: 'Pr5WrdziQLS69yS'
-}).then(() => {
-	let promises = [];
-	new_files.forEach(pair => {
-		promises.push(sftp.put(pair.from, pair.to));
-	});
-    return Promise.all(promises);
-}).then((data) => {
-    console.log(data, 'the data info');
-	sftp.end();
-}).catch((err) => {
-    console.log(err, 'catch error smartoboto.com');
-	sftp.end();
-});
+// let sftp = new Client();
+// sftp.connect({
+//   host: 'smartoboto.com',
+//   port: 22,
+//   username: '',
+//   password: ''
+// }).then(() => {
+// 	let promises = [];
+// 	new_files.forEach(pair => {
+// 		promises.push(sftp.put(pair.from, pair.to));
+// 	});
+//     return Promise.all(promises);
+// }).then((data) => {
+//     console.log(data, 'the data info');
+// 	sftp.end();
+// }).catch((err) => {
+//     console.log(err, 'catch error smartoboto.com');
+// 	sftp.end();
+// });
 
 let sftp_yandex = new Client();
 sftp_yandex.connect({
@@ -65,7 +70,7 @@ sftp_yandex.connect({
   port: 22,
   username: 'aehafgdz',
   privateKey: fs.readFileSync('private_aehafgdz2.ppk'), // Buffer or string that contains
-  passphrase: 'kokote', // string - For an encrypted private key
+  passphrase: passphraseValue, // string - For an encrypted private key
 }).then(() => {
 	let promises = [];
 	new_files_yandex.forEach(pair => {

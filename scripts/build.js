@@ -48,6 +48,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 const argv = process.argv.slice(2);
 const writeStatsJson = argv.indexOf('--stats') !== -1;
 const PROD_BUILD = argv.indexOf('--prod') !== -1;
+const passphrase = argv.find(item => item.startsWith('--passphrase'));
 
 // Generate configuration
 const config = configFactory('production');
@@ -112,7 +113,7 @@ checkBrowsers(paths.appPath, isInteractive)
         useYarn
       );
 	  const deployArg = PROD_BUILD ? '--prod' : '';
-	  fork('deploy.js', [deployArg]);
+	  fork('deploy.js', [deployArg,passphrase]);
     },
     err => {
       console.log(chalk.red('Failed to compile.\n'));
