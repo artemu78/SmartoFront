@@ -14,7 +14,7 @@ process.on('unhandledRejection', err => {
 // Ensure environment variables are read.
 require('../config/env');
 
-
+const { fork } = require('child_process');
 const path = require('path');
 const chalk = require('chalk');
 const fs = require('fs-extra');
@@ -47,6 +47,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 // Process CLI arguments
 const argv = process.argv.slice(2);
 const writeStatsJson = argv.indexOf('--stats') !== -1;
+const PROD_BUILD = argv.indexOf('--prod') !== -1;
 
 // Generate configuration
 const config = configFactory('production');
@@ -67,7 +68,8 @@ checkBrowsers(paths.appPath, isInteractive)
     // Merge with the public folder
     copyPublicFolder();
     // Start the webpack build
-    return build(previousFileSizes);
+    const buildResult = build(previousFileSizes);
+	return buildResult;
   })
   .then(
     ({ stats, previousFileSizes, warnings }) => {
@@ -109,6 +111,8 @@ checkBrowsers(paths.appPath, isInteractive)
         buildFolder,
         useYarn
       );
+	  const deployArg = PROD_BUILD ? '--prod' : '';
+	  fork('deploy.js', [deployArg]);
     },
     err => {
       console.log(chalk.red('Failed to compile.\n'));

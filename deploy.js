@@ -4,7 +4,12 @@ console.log('deploy.js files ' + new Date().toString());
 let new_files = [];
 let new_files_yandex = [];
 const remote_path = '/home/aehafgdz/public_html/smartoboto/';
-const remote_path_yandex = '/var/www/html/';
+let remote_path_yandex = '/var/www/test/';
+
+const argv = process.argv.slice(2);
+const PROD_BUILD = argv.indexOf('--prod') !== -1;
+if (PROD_BUILD) 
+	remote_path_yandex = '/var/www/html/';
 
 fs.copyFileSync(path.join('build', 'index.html'), path.join('build', 'lk.html'));
 
