@@ -44,6 +44,7 @@ new_files_yandex.push({
 
 let Client = require('ssh2-sftp-client');
 
+
 // let sftp = new Client();
 // sftp.connect({
 //   host: 'smartoboto.com',
