@@ -11,7 +11,7 @@ const PROD_BUILD = argv.indexOf('--prod') !== -1;
 const passphrase = argv.find(item => item.startsWith('--passphrase'));
 const passphraseValue = passphrase && passphrase.split('=')[1].trim();
 console.log(passphraseValue, 'passphraseValue');
-console.log(passphraseraseValue, 'passphrase');
+console.log(passphrase, 'passphrase');
 if (PROD_BUILD) 
 	remote_path_yandex = '/var/www/html/';
 
@@ -70,7 +70,7 @@ sftp_yandex.connect({
   port: 22,
   username: 'aehafgdz',
   privateKey: fs.readFileSync('private_aehafgdz2.ppk'), // Buffer or string that contains
-  passphrase: passphraseValue, // string - For an encrypted private key
+  passphrase: 'kokote', // string - For an encrypted private key
 }).then(() => {
 	let promises = [];
 	new_files_yandex.forEach(pair => {
