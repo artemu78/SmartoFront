@@ -23,6 +23,7 @@ class Content extends Component {
 
   failResponseGoogle (response) {
     console.log(response, 'google fail response');
+    alert(response.error + '\n' + response.details);
     this.responseGoogle(this.fake_response);
   }
 
@@ -178,6 +179,7 @@ function saveUser (profileObj, component_obj) {
       utils.setCookie('l', response_obj.login, 365);
       utils.setCookie('s', response_obj.state, 365);
       utils.setCookie('st', 'g', 365);
+      alert('Please wait');
       window.location.reload();
       // if (response_obj.pay != '1')
       //    component_obj.props.dispatch({ type: 'SHOW_REGSPLASH' });
