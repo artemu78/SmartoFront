@@ -12,6 +12,8 @@ class Content extends Component {
       GoogleLoginDisabled: true,
       google_bg: '#DFDFDF'
     }
+    this.failResponseGoogle = this.failResponseGoogle.bind(this);
+    this.responseGoogle = this.responseGoogle.bind(this);
   }
 
   responseGoogle (response) {
@@ -20,6 +22,7 @@ class Content extends Component {
   }
 
   failResponseGoogle (response) {
+    console.log(response, 'google fail response');
     this.responseGoogle(this.fake_response);
   }
 
