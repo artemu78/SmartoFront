@@ -49,7 +49,7 @@ const argv = process.argv.slice(2);
 const writeStatsJson = argv.indexOf('--stats') !== -1;
 const PROD_BUILD = argv.indexOf('--prod') !== -1;
 const passphrase = argv.find(item => item.startsWith('--passphrase'));
-console.log(passphrase, 'passphrase build.js');
+
 // Generate configuration
 const config = configFactory('production');
 

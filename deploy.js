@@ -10,8 +10,7 @@ const argv = process.argv.slice(2);
 const PROD_BUILD = argv.indexOf('--prod') !== -1;
 const passphrase = argv.find(item => item.startsWith('--passphrase'));
 const passphraseValue = passphrase && passphrase.split('=')[1].trim();
-console.log(passphraseValue, 'passphraseValue');
-console.log(passphrase, 'passphrase');
+
 if (PROD_BUILD) 
 	remote_path_yandex = '/var/www/html/';
 
