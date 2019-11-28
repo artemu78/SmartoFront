@@ -1,9 +1,11 @@
 import React from 'react';
-import { Add, CheckBox, CheckBoxOutlineBlank, Poll, RadioButtonChecked } from '@material-ui/icons';
+import { Edit, CheckBox, CheckBoxOutlineBlank, Poll, RadioButtonChecked } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 import {
   TableCell,
-  TableRow
+  TableRow,
+  Button,
+  Fab
 } from '@material-ui/core';
 const { connect } = require('react-redux');
 const toObject = (array) => {
@@ -17,6 +19,10 @@ const toObject = (array) => {
 
 const EventRow = (props) => {
   const { event, allPossibleEvents, allPossibleActions, schemes, bot, allPossiblePolls } = props;
+  
+  const editEvent = (event_id) => {
+  return () => {};
+}
   const eventsNamesObj = toObject(allPossibleEvents);
   const eventsActionsObj = toObject(allPossibleActions);
   const screensObj = toObject(schemes[bot.id]);
@@ -29,6 +35,8 @@ const EventRow = (props) => {
   const answerText = event.pollAnswerId ? (<><br/><RadioButtonChecked/> {answersObj[event.pollAnswerId]}</>) : '';
   return (
     <TableRow key={event.event_id}>
+      {+event.active ? <CheckBox /> : <CheckBoxOutlineBlank/>}
+      &nbsp;
       <TableCell key="1">
         {eventsNamesObj[event.eventType]}
         {pollText}
@@ -36,7 +44,9 @@ const EventRow = (props) => {
       </TableCell>
       <TableCell key="2">{eventsActionsObj[event.actionType]}</TableCell>
       <TableCell key="3">{screensObj[event.screenId]}</TableCell>
-      <TableCell key="4">{+event.active ? <CheckBox /> : <CheckBoxOutlineBlank/>}</TableCell>
+      <TableCell key="4">
+            <Fab color="primary" aria-label="edit" onClick={this.editEvent(event.event_id)}><Edit/></Fab>
+      </TableCell>
     </TableRow>
   );
 }
