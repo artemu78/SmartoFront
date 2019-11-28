@@ -19,10 +19,9 @@ const toObject = (array) => {
 
 const EventRow = (props) => {
   const { event, allPossibleEvents, allPossibleActions, schemes, bot, allPossiblePolls } = props;
-  
   const editEvent = (event_id) => {
-  return () => {};
-}
+    return () => {};
+  }
   const eventsNamesObj = toObject(allPossibleEvents);
   const eventsActionsObj = toObject(allPossibleActions);
   const screensObj = toObject(schemes[bot.id]);
