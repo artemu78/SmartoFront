@@ -44,7 +44,7 @@ const EventRow = (props) => {
       <TableCell key="2">{eventsActionsObj[event.actionType]}</TableCell>
       <TableCell key="3">{screensObj[event.screenId]}</TableCell>
       <TableCell key="4">
-            <Fab color="primary" aria-label="edit" onClick={this.editEvent(event.event_id)}><Edit/></Fab>
+        <Fab color="primary" aria-label="edit" onClick={this.editEvent(event.event_id)}><Edit/></Fab>
       </TableCell>
     </TableRow>
   );
