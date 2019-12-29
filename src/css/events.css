@@ -1,6 +1,10 @@
 :local(.event_item) {
-  padding: 0px 10px;
-  display: inline-flex;
+  padding: 10px 0px;
+  /* display: inline-flex; */
   flex-direction: column;
   width: 150px;
+}
+
+:local(.row_buttons) {
+  margin: 5px;
 }

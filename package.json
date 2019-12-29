@@ -64,7 +64,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-	"build-prod": "node scripts/build.js --prod",
+    "build-prod": "node scripts/build.js --prod",
     "prebuild": "npm version patch",
     "postbuild": "",
     "test": "jest"
@@ -131,5 +131,11 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^4.0.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

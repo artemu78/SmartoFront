@@ -65,6 +65,7 @@ class Events extends Component {
   }
 
   setEventItem (obj) {
+    debugger;
     let { addEvents } = this.state;
     addEvents.set(obj.id, obj);
   }
@@ -174,18 +175,19 @@ class Events extends Component {
             <StyledTableCell>Action</StyledTableCell>
             <StyledTableCell>Screen</StyledTableCell>
             <StyledTableCell>Active</StyledTableCell>
+            <StyledTableCell>&nbsp;</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {
             Array.from(events.values()).map(eventItem => {
-              return <EventRow event={eventItem} allPossibleEvents={allPossibleEvents} allPossibleActions={allPossibleActions} allPossiblePolls={pollsRawData}/>
+              return <EventRow event={eventItem} allPossibleEvents={allPossibleEvents} allPossibleActions={allPossibleActions} allPossiblePolls={pollsRawData} setEventItem={this.setEventItem}/>
             })
           }
+          { eventsComponents }
         </TableBody>
       </Table>
       <br/>
-      { eventsComponents }
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <Fab color="primary" aria-label="add" onClick={this.addEvent}><Add/></Fab>
         <Button variant="contained" size="large" color="primary" style={{ float: 'right' }} onClick={this.saveEvents}><Save />&nbsp;Save</Button>

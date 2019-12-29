@@ -5,27 +5,32 @@ import {
   MenuItem,
   InputLabel,
   Checkbox,
-  Select
-  // FormHelperText
+  Select,
+  TableCell,
+  TableRow,
+  Fab
 } from '@material-ui/core';
+import { Check, Clear } from '@material-ui/icons';
 import style from 'root/css/events.css';
 const { connect } = require('react-redux');
 
 class EventItem extends Component {
   constructor (props) {
     super(props);
+    this.getPollAnswersItems = this.getPollAnswersItems.bind(this);
     this.state = {
       id: props.id,
-      eventType: '',
-      pollId: '',
-      pollAnswerId: '',
-      actionType: '',
-      screenId: '',
-      pollAnswersItems: [],
-      active: false,
-      allPossibleEvents: props.allPossibleEvents
+      eventType: props.eventType || '',
+      pollId: props.pollId || '',
+      pollAnswerId: props.pollAnswerId || '',
+      actionType: props.actionType || '',
+      screenId: props.screenId || '',
+      active: props.active || false,
+      allPossibleEvents: props.allPossibleEvents,
+      pollAnswersItems: this.getPollAnswersItems(props.pollId) || []
     }
   }
+
   cutText (str, len) {
     return str.length > len ? (str.substring(0, len - 2) + '...') : str;
   }
@@ -52,16 +57,19 @@ class EventItem extends Component {
     const handleFunc = this.handleSelect(name);
     return event => {
       const currentPollId = event.target.value;
-      const currentPoll = this.props.polls.find(item => item.id == currentPollId);
-      if (currentPoll && currentPoll.data) {
-        const pollAnswersItems = currentPoll.data.map(answer => {
-          return <MenuItem value={answer.id} key={answer.id} title={answer.text}>{this.cutText(answer.text, 15)}</MenuItem>
-        });
-        this.setState({ pollAnswersItems });
-      }
+      const pollAnswersItems = this.getPollAnswersItems(currentPollId);
+      this.setState({ pollAnswersItems });
       handleFunc(event);
     }
   };
+
+  getPollAnswersItems (currentPollId) {
+    const currentPoll = this.props.polls.find(item => item.id == currentPollId);
+    if (currentPoll && currentPoll.data)
+      return currentPoll.data.map(answer => {
+        return <MenuItem value={answer.id} key={answer.id} title={answer.text}>{this.cutText(answer.text, 15)}</MenuItem>
+      });
+  }
 
   getPollsMenuItems () {
     return this.props.polls.map(poll => {
@@ -78,8 +86,9 @@ class EventItem extends Component {
   }
 
   render () {
-    const { eventType, pollId, pollAnswerId, actionType, screenId, pollAnswersItems, allPossibleEvents, allPossibleActions } = this.state;
-
+    const { eventType, pollId, pollAnswerId, actionType, screenId, pollAnswersItems, allPossibleEvents, active } = this.state;
+    const { cancelFunc, saveFunc } = this.props;
+    let clearButton, saveButton;
     const eventTypeComponent = <div className = { style.event_item }>
       <InputLabel>Event type</InputLabel>
       <Select value={eventType} onChange={this.handleSelect('eventType')}>
@@ -87,6 +96,7 @@ class EventItem extends Component {
           return <MenuItem value={event.id} key={event.id}>{event.name}</MenuItem>;
         })}
       </Select>
+      <br/>
     </div>;
 
     const pollComponent = <div className = { style.event_item }>
@@ -94,6 +104,7 @@ class EventItem extends Component {
       <Select value={pollId} onChange={this.handleSelectPoll('pollId')}>
         {this.getPollsMenuItems()}
       </Select>
+      <br/>
     </div>;
 
     const answersComponent = <div className = { style.event_item }>
@@ -119,19 +130,33 @@ class EventItem extends Component {
       </Select>
     </div>;
 
-    const activateCheckbox = <div className = { style.event_item }>
+    const activateCheckbox = <div className = { style.event_item } style={{ width: null }}>
       <InputLabel>Active</InputLabel>
-      <Checkbox color="default" onChange={this.handleCheck('active')}/>
+      <Checkbox color="default" onChange={this.handleCheck('active')} checked={active}/>
     </div>;
 
-    return <div id="zzz" style={{ display: 'flex', padding: '20px 0px' }}>
-      {eventTypeComponent}
-      {eventType ? pollComponent : null}
-      {pollId ? answersComponent : null}
-      {pollAnswerId ? actionTypeComponent : null}
-      {actionType ? screensComponent : null}
-      {screenId ? activateCheckbox : null}
-    </div>
+    if (cancelFunc)
+      clearButton = <Fab color="primary" aria-label="edit" onClick={cancelFunc()}><Clear/></Fab>;
+    if (saveFunc)
+      saveButton = <Fab color="primary" aria-label="edit" onClick={saveFunc}><Check/></Fab>
+
+    // return <div id="zzz" style={{ display: 'flex', padding: '20px 0px' }}>
+    return (
+      <TableRow key={0}>
+        <TableCell key="1">
+          {eventTypeComponent}
+          {eventType ? pollComponent : null}
+          {pollId ? answersComponent : null}
+        </TableCell>
+        <TableCell key="2">
+          {pollAnswerId ? actionTypeComponent : null}
+        </TableCell>
+        <TableCell key="3">{actionType ? screensComponent : null}</TableCell>
+        <TableCell key="4">{screenId ? activateCheckbox : null}</TableCell>
+        <TableCell key="5"><div style={{ display: 'flex' }}>{saveButton}{clearButton}&nbsp;</div></TableCell>
+      </TableRow>
+    );
+    /* </div> */
   }
 }
 
