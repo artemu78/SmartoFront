@@ -29,8 +29,8 @@ class Support extends Component {
   }
 
   render () {
-    if (!this.props.show_support)
-      return null;
+    // if (!this.props.show_support)
+    //   return null;
 
     return (
       <div className={css.support}>

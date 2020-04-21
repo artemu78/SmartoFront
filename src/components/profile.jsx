@@ -89,8 +89,8 @@ class Profile extends React.Component {
   }
 
   render () {
-    if (!this.props.show_profile)
-      return null;
+    // if (!this.props.show_profile)
+    //   return null;
     let inputStyle = {
       border: '2px solid #E2E4FA',
       height: '42px',

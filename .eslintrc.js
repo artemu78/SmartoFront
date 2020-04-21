@@ -1,5 +1,5 @@
 module.exports = {
-    extends: ["standard", "prettier"],
+    extends: ["prettier", "standard"],
 	plugins: ["babel", "import", "react", "prettier"],
 	parserOptions: {
 		ecmaVersion: 6,
