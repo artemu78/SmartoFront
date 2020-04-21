@@ -33,8 +33,7 @@ E.deleteCookie = function (cname) {
 };
 
 E.sendRequest = function (request_str, callback, url, method = 'POST') {
-  if (typeof request_str === 'object')
-    request_str = JSON.stringify(request_str);
+  if (typeof request_str === 'object') request_str = JSON.stringify(request_str);
   var xhr = new window.XMLHttpRequest();
   xhr.open(method, url);
   xhr.setRequestHeader('Content-Type', 'application/json');
@@ -48,8 +47,7 @@ E.sendRequest = function (request_str, callback, url, method = 'POST') {
     }
     if (xhr.status === 200 && response_obj.res !== 'ok')
       window.alert('Something went wrong.  ' + response_obj.error);
-    else if (xhr.status !== 200)
-      window.alert('Request failed.  Returned status of ' + xhr.status);
+    else if (xhr.status !== 200) window.alert('Request failed.  Returned status of ' + xhr.status);
     else if (callback) callback(response_obj);
   };
   xhr.send(request_str);

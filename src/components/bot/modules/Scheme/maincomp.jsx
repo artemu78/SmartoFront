@@ -1,25 +1,27 @@
 import React from 'react';
 import axios from 'axios';
-import MainScreen from './mainscreen'
+import MainScreen from './mainscreen';
 import scheme_style from 'root/css/scheme.css';
 import test_scheme from 'root/test_data/test_scheme';
 const { connect } = require('react-redux');
 const url = './data/scheme.php';
 const utils = require('root/utils');
 
-const default_screen = [{
-  _id: Date.now(),
-  name: 'First screen',
-  text: '',
-  parent: 0,
-  payload: '',
-  media: null,
-  main: true,
-  buttons: []
-}];
+const default_screen = [
+  {
+    _id: Date.now(),
+    name: 'First screen',
+    text: '',
+    parent: 0,
+    payload: '',
+    media: null,
+    main: true,
+    buttons: []
+  }
+];
 
 class MainComp extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     default_screen.bot = this.props.bot.id;
     this.state = {
@@ -31,66 +33,65 @@ class MainComp extends React.Component {
     this.data = [];
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.botId = this.props.bot.id;
-    if (window.location.hostname !== 'localhost')
-      this.getDataFromServer();
+    if (window.location.hostname !== 'localhost') this.getDataFromServer();
     else {
       let scheme = test_scheme;
       this.data = scheme;
       const action_data = { type: 'SET_BOT_SCHEME', bot: this.botId, scheme };
-      this.props.dispatch(action_data)
+      this.props.dispatch(action_data);
       this.setState({ data: scheme, loading: false, files: [], save: 'Save', disable: false });
     }
   }
 
-  getDataFromServer () {
+  getDataFromServer() {
     const formData = new window.FormData();
     const bot_id = this.props.bot.id;
     formData.append('b', bot_id);
     formData.append('l', utils.getCookie('l'));
     formData.append('oper', 'get');
-    axios.post(url, formData)
-      .then(response => {
-        if (typeof (response.data) !== 'object' || typeof (response.data.length) !== 'number') {
+    axios
+      .post(url, formData)
+      .then((response) => {
+        if (typeof response.data !== 'object' || typeof response.data.length !== 'number') {
           window.alert('error: json is not array');
           response.data = [];
         }
         let data = response.data;
-        if (data.length === 0)
-          data = default_screen;
+        if (data.length === 0) data = default_screen;
         this.data = data;
         const action_data = { type: 'SET_BOT_SCHEME', bot: bot_id, scheme: data };
-        this.props.dispatch(action_data)
+        this.props.dispatch(action_data);
         this.setState({ data, loading: false, files: [], save: 'Save', disable: false });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
 
-  setMainScreen (screenId, setChecked) {
+  setMainScreen(screenId, setChecked) {
     const { data } = this.state;
     let yesRemoveMain = true;
     let atLeastOneScreenIsMain = false;
-    const screensList = data.map(item => {
+    const screensList = data.map((item) => {
       const setScreenMain = item._id === screenId && setChecked;
       item.main = setScreenMain;
       atLeastOneScreenIsMain = atLeastOneScreenIsMain || setScreenMain;
       return item;
     });
     if (!atLeastOneScreenIsMain)
-      yesRemoveMain = window.confirm('No screen set as first. Bot will be in silent mode. Are you sure?');
-    if (!yesRemoveMain)
-      return;
+      yesRemoveMain = window.confirm(
+        'No screen set as first. Bot will be in silent mode. Are you sure?'
+      );
+    if (!yesRemoveMain) return;
     this.data = screensList;
-    this.setState({ data: this.data })
+    this.setState({ data: this.data });
   }
 
-  deleteScreen (screen_obj) {
+  deleteScreen(screen_obj) {
     let id = screen_obj._id;
-    if (!window.confirm(`delete screen ${screen_obj.name}?`))
-      return;
+    if (!window.confirm(`delete screen ${screen_obj.name}?`)) return;
     const data = this.data.filter((item) => {
       return item._id !== id && item.parent !== id;
     });
@@ -98,7 +99,7 @@ class MainComp extends React.Component {
     this.setState({ data: this.data });
   }
 
-  addScreen (parent_screen) {
+  addScreen(parent_screen) {
     let obj = {
       _id: Date.now(),
       parent: parent_screen._id,
@@ -109,53 +110,52 @@ class MainComp extends React.Component {
       screen_var: ''
     };
 
-    this.data.forEach(element => {
-      if (element._id === parent_screen._id)
-        element.name = 'yes parent';
+    this.data.forEach((element) => {
+      if (element._id === parent_screen._id) element.name = 'yes parent';
     });
     this.data.unshift(obj);
-    this.setState({ data: this.data })
+    this.setState({ data: this.data });
   }
 
-  createList (data, parent) {
+  createList(data, parent) {
     const listItems = data.map((item, i) => {
       if (item.parent === parent) {
         let child_screens = null;
         let childs = data.filter((child) => child.parent === item._id);
-        if (childs.length)
-          child_screens = <ul>
-            { this.createList(data, item._id) }
-          </ul>
-        return <li className={scheme_style.screen} key={item._id}>
-          <a><MainScreen
-            dispatch={this.props.dispatch}
-            obj={item}
-            store={this.data}
-            addScreen={this.addScreen}
-            deleteScreen={this.deleteScreen}
-            bot={this.props.bot} setMainScreen={this.setMainScreen}/>
-          </a>
-          {child_screens}
-        </li>
+        if (childs.length) child_screens = <ul>{this.createList(data, item._id)}</ul>;
+        return (
+          <li className={scheme_style.screen} key={item._id}>
+            <a>
+              <MainScreen
+                dispatch={this.props.dispatch}
+                obj={item}
+                store={this.data}
+                addScreen={this.addScreen}
+                deleteScreen={this.deleteScreen}
+                bot={this.props.bot}
+                setMainScreen={this.setMainScreen}
+              />
+            </a>
+            {child_screens}
+          </li>
+        );
       }
       return null;
     });
     return listItems;
   }
 
-  mysort (a, b) {
-    if (a._id > b._id)
-      return -1;
-    if (a._id < b._id)
-      return 1;
+  mysort(a, b) {
+    if (a._id > b._id) return -1;
+    if (a._id < b._id) return 1;
     return 0;
   }
 
-  render () {
+  render() {
     if (this.state.loading) return null;
     return (
-      <ul className="tree" style={{ padding: '0px' }}>
-        { this.createList(this.state.data.sort(this.mysort), 0) }
+      <ul className='tree' style={{ padding: '0px' }}>
+        {this.createList(this.state.data.sort(this.mysort), 0)}
       </ul>
     );
   }

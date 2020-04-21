@@ -3,5 +3,6 @@ module.exports = {
     tabWidth: 2,
     jsxSingleQuote: true,
     endOfLine: 'auto',
-    trailingComma: 'none'
+    trailingComma: 'none',
+    printWidth: 100
 }

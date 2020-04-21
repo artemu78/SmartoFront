@@ -6,7 +6,7 @@ const utils = require('./../../utils.js');
 let api_url = 'data/sendmessage.php';
 
 class Broadcast extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.immediatePushFormData = new window.FormData();
     this.handleChange = this.handleChange.bind(this);
@@ -23,9 +23,9 @@ class Broadcast extends Component {
       var: '',
       val: ''
     };
-  };
+  }
 
-  filesOnChange (e) {
+  filesOnChange(e) {
     const files = Array.from(e.target.files);
 
     files.forEach((file, i) => {
@@ -47,11 +47,11 @@ class Broadcast extends Component {
     */
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.getPushes();
   }
 
-  getPushes () {
+  getPushes() {
     let obj = {
       l: utils.getCookie('l'),
       b: this.props.bot.id,
@@ -61,15 +61,13 @@ class Broadcast extends Component {
     utils.sendRequest(obj, this.pushes, api_url, method);
   }
 
-  pushes (response) {
+  pushes(response) {
     if (typeof response.data === 'object')
-      this.setState({ pushes: response.data.p,
-        pushes_i: response.data.i
-      });
+      this.setState({ pushes: response.data.p, pushes_i: response.data.i });
     // console.log(response, 'pushes response');
   }
 
-  handleResponse (response) {
+  handleResponse(response) {
     this.immediatePushFormData = new window.FormData();
     if (response.res === 'ok') {
       window.webix.message({
@@ -89,7 +87,7 @@ class Broadcast extends Component {
       });
   }
 
-  handleResponse_push (response) {
+  handleResponse_push(response) {
     this.immediatePushFormData = new window.FormData();
     window.webix.message({
       text: 'Message sent',
@@ -101,7 +99,7 @@ class Broadcast extends Component {
     this.getPushes();
   }
 
-  handleChange (event) {
+  handleChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
@@ -110,36 +108,38 @@ class Broadcast extends Component {
     });
   }
 
-  send () {
+  send() {
     const confirm_obj = {
       text: 'Message for all bots users will be sent immediately. Are you sure?',
-      callback: answer => {
+      callback: (answer) => {
         answer && this.sendImmediateMessage();
       }
     };
     window.webix.confirm(confirm_obj);
   }
 
-  sendImmediateMessage () {
+  sendImmediateMessage() {
     this.immediatePushFormData.append('l', utils.getCookie('l'));
     this.immediatePushFormData.append('b', this.props.bot.id);
     this.immediatePushFormData.append('t', 'i');
     this.immediatePushFormData.append('message', this.state.message);
 
-    post(api_url, this.immediatePushFormData).then(response => {
-      this.handleResponse(response.data);
-    }).catch(error => {
-      window.webix.message({
-        text: error,
-        type: 'error',
-        expire: 10000,
-        id: 'message2'
+    post(api_url, this.immediatePushFormData)
+      .then((response) => {
+        this.handleResponse(response.data);
+      })
+      .catch((error) => {
+        window.webix.message({
+          text: error,
+          type: 'error',
+          expire: 10000,
+          id: 'message2'
+        });
+        this.immediatePushFormData = new window.FormData();
       });
-      this.immediatePushFormData = new window.FormData();
-    });
   }
 
-  send_push () {
+  send_push() {
     let obj = {
       l: utils.getCookie('l'),
       b: this.props.bot.id,
@@ -152,68 +152,130 @@ class Broadcast extends Component {
     utils.sendRequest(obj, this.handleResponse_push, 'data/sendmessage.php');
   }
 
-  push_template (push_item) {
-    return <>
-      <hr/>
-      {push_item.var}={push_item.val}, {push_item.min_delay} min.<br/>
-      {push_item.text}
-    </>
+  push_template(push_item) {
+    return (
+      <>
+        <hr />
+        {push_item.var}={push_item.val}, {push_item.min_delay} min.
+        <br />
+        {push_item.text}
+      </>
+    );
   }
 
-  push_immediate_template (push_item) {
-    return <>
-      <hr/>
-      {push_item.dt} {push_item.text}
-    </>
+  push_immediate_template(push_item) {
+    return (
+      <>
+        <hr />
+        {push_item.dt} {push_item.text}
+      </>
+    );
   }
 
-  render () {
+  render() {
     let pushes = this.state.pushes.map((push_item, i) => {
       return this.push_template(push_item, i);
     });
     let immediate_pushes = this.state.pushes_i.map((push_item, i) => {
       return this.push_immediate_template(push_item, i);
     });
-    let conditional_push = <fieldset className={css.Broadcast}><legend>Conditional pushes</legend>
-      <div className="text_input">
-                Message<br/>
-        <textarea type="text" name="message_push" value={this.state.message_push} onChange={this.handleChange}/><br/>
-                    Send after <input type="number" name="push_mins" size="3" min="0" value={this.state.push_mins} onChange={this.handleChange}/> minutes for
-                        &nbsp;<input type="text" name="var" min="0" value={this.state.var} onChange={this.handleChange} style={{ width: '90px' }} />&nbsp;=&nbsp;
-        <input type="text" name="val" min="0" value={this.state.val} onChange={this.handleChange} style={{ width: '90px' }} />
-      </div>
-      <div className="button" onClick={() => { this.send_push() }}>Set push</div>
-      <div className={css.pushes}>
-        <div>Current pushes:</div>
-        {pushes}
-      </div>
-    </fieldset>;
+    let conditional_push = (
+      <fieldset className={css.Broadcast}>
+        <legend>Conditional pushes</legend>
+        <div className='text_input'>
+          Message
+          <br />
+          <textarea
+            type='text'
+            name='message_push'
+            value={this.state.message_push}
+            onChange={this.handleChange}
+          />
+          <br />
+          Send after{' '}
+          <input
+            type='number'
+            name='push_mins'
+            size='3'
+            min='0'
+            value={this.state.push_mins}
+            onChange={this.handleChange}
+          />{' '}
+          minutes for &nbsp;
+          <input
+            type='text'
+            name='var'
+            min='0'
+            value={this.state.var}
+            onChange={this.handleChange}
+            style={{ width: '90px' }}
+          />
+          &nbsp;=&nbsp;
+          <input
+            type='text'
+            name='val'
+            min='0'
+            value={this.state.val}
+            onChange={this.handleChange}
+            style={{ width: '90px' }}
+          />
+        </div>
+        <div
+          className='button'
+          onClick={() => {
+            this.send_push();
+          }}
+        >
+          Set push
+        </div>
+        <div className={css.pushes}>
+          <div>Current pushes:</div>
+          {pushes}
+        </div>
+      </fieldset>
+    );
 
     return (
-      <div className="bot_options">
-        <div className="chapter_header">Broadcast</div>
-        <fieldset className={css.Broadcast}><legend>Immediate send</legend>
-          <div className="text_input">Message<br/>
-            <textarea type="text" name="message" value={this.state.message} onChange={this.handleChange}/>
+      <div className='bot_options'>
+        <div className='chapter_header'>Broadcast</div>
+        <fieldset className={css.Broadcast}>
+          <legend>Immediate send</legend>
+          <div className='text_input'>
+            Message
+            <br />
+            <textarea
+              type='text'
+              name='message'
+              value={this.state.message}
+              onChange={this.handleChange}
+            />
           </div>
-          <div className="text_input">Attachment <br/>
-            <input type="file" id='multi' onChange={this.filesOnChange} multiple/>
+          <div className='text_input'>
+            Attachment <br />
+            <input type='file' id='multi' onChange={this.filesOnChange} multiple />
           </div>
-          <div className="button" onClick={() => { this.send() }}>Immediate send</div>
+          <div
+            className='button'
+            onClick={() => {
+              this.send();
+            }}
+          >
+            Immediate send
+          </div>
           <div className={css.pushes}>
             <div>Immediate pushes history:</div>
             {immediate_pushes}
           </div>
-        </fieldset><br/>
+        </fieldset>
+        <br />
         {conditional_push}
-      </div>);
+      </div>
+    );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   bot: state.bot
 });
 
-export default connect(
-  mapStateToProps
-)(Broadcast);
+export default connect(mapStateToProps)(Broadcast);

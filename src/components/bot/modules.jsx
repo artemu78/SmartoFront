@@ -12,37 +12,43 @@ import css from 'root/css/menu.css';
 // import AccountTreeIcon from '@material-ui/icons/AccountTree';
 
 const icons = {
-  'About': 'info',
-  'Scheme': 'device_hub',
-  'Events': 'dns'
+  About: 'info',
+  Scheme: 'device_hub',
+  Events: 'dns'
 };
 
 class BotmModules extends Component {
-  constructor () {
+  constructor() {
     super();
     this.state = { selected: 7 };
     this.modules = [];
     let modules = window.sessionStorage.getItem('modules');
-    JSON.parse(modules).forEach(item => {
+    JSON.parse(modules).forEach((item) => {
       this.modules[item.id] = item;
-    }); ;
+    });
   }
 
-  item_template (item, key = 0) {
-    let add = (item === this.state.selected) ? css.menu_item_selected : '';
+  item_template(item, key = 0) {
+    let add = item === this.state.selected ? css.menu_item_selected : '';
     let css_class = [css.menu_item, add].join(' ');
     let name = this.modules[item].name;
-    return <div key={key} className={css_class} onClick={e => {
-      this.setState({ selected: item });
-    }} >
-      <div className={css.menu_item_text}>
-        <i className="material-icons">{icons[name]}</i>&nbsp;
-        {name}
+    return (
+      <div
+        key={key}
+        className={css_class}
+        onClick={(e) => {
+          this.setState({ selected: item });
+        }}
+      >
+        <div className={css.menu_item_text}>
+          <i className='material-icons'>{icons[name]}</i>&nbsp;
+          {name}
+        </div>
       </div>
-    </div>;
+    );
   }
 
-  render () {
+  render() {
     const { bot } = this.props;
     let selected_module;
     switch (this.state.selected) {
@@ -78,18 +84,19 @@ class BotmModules extends Component {
         break;
     }
 
-    let modules_html = bot.modules.filter(item => this.modules[item].visual != 0).map((item, i) => {
-      return this.item_template(item, i);
-    });
+    let modules_html = bot.modules
+      .filter((item) => this.modules[item].visual != 0)
+      .map((item, i) => {
+        return this.item_template(item, i);
+      });
     return (
-      <div className="bot_options">
-        <div className={css.menu} style={{ 'top': '0px' }}>
+      <div className='bot_options'>
+        <div className={css.menu} style={{ top: '0px' }}>
           {modules_html}
         </div>
-        <div className='modules_content'>
-          {selected_module}
-        </div>
-      </div>);
+        <div className='modules_content'>{selected_module}</div>
+      </div>
+    );
   }
 }
 

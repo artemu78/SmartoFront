@@ -24,7 +24,7 @@ const save_url = 'data/saveoptions.php';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    fontSize: '1rem',
+    fontSize: '1rem'
   }
 }))(TableCell);
 const allPossibleEvents = [{ id: 'new_vote_poll', name: 'New poll vote' }];
@@ -126,7 +126,7 @@ class Events extends Component {
     let request2 = {
       l: utils.getCookie('l'),
       b: this.props.bot.id,
-      o: 'gevents',
+      o: 'gevents'
     };
     if (window.location.port === '3000') {
       this.handlePollsDataResponse(test_polls);
@@ -178,10 +178,10 @@ class Events extends Component {
       <React.Fragment>
         <Table>
           <colgroup>
-            <col width="30%" />
-            <col width="30%" />
-            <col width="30%" />
-            <col width="10%" />
+            <col width='30%' />
+            <col width='30%' />
+            <col width='30%' />
+            <col width='10%' />
           </colgroup>
           <TableHead>
             <TableRow>
@@ -209,13 +209,13 @@ class Events extends Component {
         </Table>
         <br />
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Fab color="primary" aria-label="add" onClick={this.addEvent}>
+          <Fab color='primary' aria-label='add' onClick={this.addEvent}>
             <Add />
           </Fab>
           <Button
-            variant="contained"
-            size="large"
-            color="primary"
+            variant='contained'
+            size='large'
+            color='primary'
             style={{ float: 'right' }}
             onClick={this.saveEvents}
           >

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 class BotOptions extends Component {
-  render () {
+  render() {
     return (
-      <div className="bot_options">
-        <div className="chapter_header">Statistics</div>
-      </div>);
+      <div className='bot_options'>
+        <div className='chapter_header'>Statistics</div>
+      </div>
+    );
   }
 }
 

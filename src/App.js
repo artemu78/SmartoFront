@@ -9,51 +9,54 @@ import Bot from './components/bot_content.jsx';
 import Support from './components/support.jsx';
 import Plan from './components/plan.jsx';
 import Service from './components/service.jsx';
-
-class App extends Component {
-  render () {
-    let style = {
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column'
-    };
-    // this.set_favicon();
-    this.add_external_css('https://fonts.googleapis.com/icon?family=Material+Icons');
-    return (
+import history from './history';
+import { BrowserRouter, Switch, Route, Router } from 'react-router-dom';
+const App = function App() {
+  let style = {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column'
+  };
+  // this.set_favicon();
+  add_external_css('https://fonts.googleapis.com/icon?family=Material+Icons');
+  console.log('render app.js');
+  return (
+    <Router history={history}>
       <div style={style}>
         <RegSplash />
-        <div className="root_row1">
+        <div className='root_row1'>
           <Header />
         </div>
-        <div className="root_row2">
-          <MyBots />
-          <Menu />
-          <Content />
-          <Profile />
-          <Bot />
-          <Support />
-          <Plan />
-          <Service />
+        <div className='root_row2'>
+          <Switch>
+            <Route exact path='/'>
+              <MyBots />
+              <Menu />
+              <Content />
+              <Bot />
+              <Plan />
+              <Service />
+            </Route>
+            <Route path='/support'>
+              <Support />
+            </Route>
+            <Route path='/profile'>
+              <Profile />
+            </Route>
+          </Switch>
         </div>
       </div>
-    );
-  }
-  set_favicon () {
-    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
-    link.href = './img/robot_icon.png';
-    document.getElementsByTagName('head')[0].appendChild(link);
-  }
+    </Router>
+  );
+};
 
-  add_external_css (url) {
-    var element = document.createElement('link');
-    element.setAttribute('rel', 'stylesheet');
-    element.setAttribute('type', 'text/css');
-    element.setAttribute('href', url);
-    document.getElementsByTagName('head')[0].appendChild(element);
-  }
+function add_external_css(url) {
+  var element = document.createElement('link');
+  element.setAttribute('rel', 'stylesheet');
+  element.setAttribute('type', 'text/css');
+  element.setAttribute('href', url);
+  document.getElementsByTagName('head')[0].appendChild(element);
 }
 
 export default App;

@@ -10,7 +10,7 @@ const utils = require('./../utils.js');
 const save_url = 'data/savecustomer.php';
 
 class Profile extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       user_name: this.props.user_name,
@@ -24,7 +24,7 @@ class Profile extends React.Component {
     this.onFailure = this.onFailure.bind(this);
   }
 
-  send () {
+  send() {
     let { dialCode, phone } = this.state;
     let data = { l: utils.getCookie('l'), dialCode, phone };
     let str = JSON.stringify(data);
@@ -33,7 +33,7 @@ class Profile extends React.Component {
     this.props.dispatch({ type: 'SET_USER_PROFILE', user_profile });
   }
 
-  handleResponse (response) {
+  handleResponse(response) {
     window.webix.message({
       text: 'Profile data saved',
       type: 'info',
@@ -42,17 +42,17 @@ class Profile extends React.Component {
     });
   }
 
-  onFailure (response) {
+  onFailure(response) {
     console.log(response);
   }
 
-  handleChange (value, data) {
+  handleChange(value, data) {
     let dialCode = data.dialCode;
     let phone = value.replace(/[^0-9]+/g, '').slice(data.dialCode.length);
     this.setState({ user_phohe: value, phone, dialCode });
   }
 
-  responseGoogle (response) {
+  responseGoogle(response) {
     if (response && response.profileObj) {
       this.setState({
         user_logo: response.profileObj.imageUrl,
@@ -68,27 +68,27 @@ class Profile extends React.Component {
     }
   }
 
-  failResponseGoodle (response) {
+  failResponseGoodle(response) {
     // this.responseGoogle(this.fake_response);
   }
 
-  logout () {
+  logout() {
     utils.deleteCookie('s');
     utils.deleteCookie('l');
     utils.deleteCookie('st');
     window.location.reload();
   }
 
-  deleteAccount () {
+  deleteAccount() {
     window.webix.message({
       text: 'Not implemented yet, sorry.',
       type: 'error',
       expire: 10000,
       id: 'message1'
-    })
+    });
   }
 
-  render () {
+  render() {
     // if (!this.props.show_profile)
     //   return null;
     let inputStyle = {
@@ -113,30 +113,34 @@ class Profile extends React.Component {
         <TextInput text='Your name' value={this.state.user_name} readOnly />
         <TextInput text='Your email' value={this.state.user_email} readOnly />
         <div className='input_descr'>Phone</div>
-        <ReactPhoneInput defaultCountry={'ru'} value={this.state.user_phohe} onChange={this.handleChange} containerStyle={containerStyle} inputStyle={ inputStyle } />
+        <ReactPhoneInput
+          defaultCountry={'ru'}
+          value={this.state.user_phohe}
+          onChange={this.handleChange}
+          containerStyle={containerStyle}
+          inputStyle={inputStyle}
+        />
         <Button text='Save' onClick={this.send} />
-        <br/><br/>
+        <br />
+        <br />
         <GoogleLogout
-          clientId="548560152629-c5n96slggeh0uenm3fm1vc6d3ghdo9mi.apps.googleusercontent.com"
-          buttonText="Logout"
-          tag="div"
+          clientId='548560152629-c5n96slggeh0uenm3fm1vc6d3ghdo9mi.apps.googleusercontent.com'
+          buttonText='Logout'
+          tag='div'
           style={goo_log_style}
           onLogoutSuccess={this.logout}
           onFailure={this.onFailure}
-        >
-        </GoogleLogout>
+        ></GoogleLogout>
       </div>
     );
   }
-};
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   show_profile: state.show_profile,
   user_name: state.user_name,
   user_email: state.user_email,
   user_phohe: state.user_phohe
 });
 
-export default connect(
-  mapStateToProps
-)(Profile);
+export default connect(mapStateToProps)(Profile);

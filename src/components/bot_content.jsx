@@ -11,7 +11,7 @@ import './../css/main.css';
 const { connect } = require('react-redux');
 
 class Bot_Content extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.options = [
       { id: 'modules', name: 'Modules' },
@@ -31,7 +31,7 @@ class Bot_Content extends Component {
     this.clickName = this.clickName.bind(this);
   }
 
-  saveBot (bot) {
+  saveBot(bot) {
     let add = { l: utils.getCookie('l'), b: bot.id, o: 'sn' };
     let obj = Object.assign({}, this.state, add);
     let str = JSON.stringify(obj);
@@ -39,7 +39,7 @@ class Bot_Content extends Component {
     utils.saveSessionBot(bot);
   }
 
-  handleResponse (response) {
+  handleResponse(response) {
     window.webix.message({
       text: 'Options saved',
       type: 'info',
@@ -48,16 +48,15 @@ class Bot_Content extends Component {
     });
   }
 
-  nameInputBlur (e) {
+  nameInputBlur(e) {
     this.setState({
       textName: false,
       botname: this.state.oldname
     });
   }
 
-  nameInputKeyPress (e) {
-    if (e.nativeEvent.type === 'input')
-      this.setState({ botname: e.target.value });
+  nameInputKeyPress(e) {
+    if (e.nativeEvent.type === 'input') this.setState({ botname: e.target.value });
     else {
       if (e.nativeEvent.keyCode === 27)
         this.setState({
@@ -75,25 +74,23 @@ class Bot_Content extends Component {
     }
   }
 
-  clickName (e) {
+  clickName(e) {
     this.setState({
       textName: true,
       oldname: this.state.botname
     });
   }
 
-  componentWillReceiveProps (newProps) {
+  componentWillReceiveProps(newProps) {
     this.setState({ botname: newProps.bot.name });
   }
 
-  componentDidUpdate () {
-    if (this.inputNameRef)
-      this.inputNameRef.focus();
-    if (document.documentElement)
-      document.documentElement.scrollTop = 0
+  componentDidUpdate() {
+    if (this.inputNameRef) this.inputNameRef.focus();
+    if (document.documentElement) document.documentElement.scrollTop = 0;
   }
 
-  header () {
+  header() {
     let bot = this.props.bot;
     let bot_logo_src = 'img/bots_logo/' + bot.logo;
     let name_control;
@@ -102,39 +99,63 @@ class Bot_Content extends Component {
       top: '8px',
       position: 'absolute',
       left: 'auto'
-    }
+    };
     if (!this.state.textName)
-      name_control = <div className="header_text" onClick={ this.clickName }>{this.state.botname}</div>;
+      name_control = (
+        <div className='header_text' onClick={this.clickName}>
+          {this.state.botname}
+        </div>
+      );
     else
-      name_control = <div className="text_input" style={input_style}>
-        <input type="text" value={this.state.botname}
-          onBlur={this.nameInputBlur}
-          onChange = { this.nameInputKeyPress }
-          onKeyUp = { this.nameInputKeyPress }
-          style={{ width: '200px' }}
-          ref={ref => {
-            this.inputNameRef = ref;
-          }}
-        />
-      </div>;
+      name_control = (
+        <div className='text_input' style={input_style}>
+          <input
+            type='text'
+            value={this.state.botname}
+            onBlur={this.nameInputBlur}
+            onChange={this.nameInputKeyPress}
+            onKeyUp={this.nameInputKeyPress}
+            style={{ width: '200px' }}
+            ref={(ref) => {
+              this.inputNameRef = ref;
+            }}
+          />
+        </div>
+      );
     let options_html = this.options.map((item, i) => {
-      let cl = (item.id === this.state.option) ? 'selected' : 'selectable';
+      let cl = item.id === this.state.option ? 'selected' : 'selectable';
       let classes = style.module + ' ' + cl;
-      return <div className={classes} key={i} onClick={() => { this.setState({ option: item.id }) } }>{item.name}</div>
+      return (
+        <div
+          className={classes}
+          key={i}
+          onClick={() => {
+            this.setState({ option: item.id });
+          }}
+        >
+          {item.name}
+        </div>
+      );
     });
 
-    let header = <div className="header">
-            &nbsp;<a href="#" className="back" onClick={() => this.props.dispatch({ type: 'SHOW_MYBOTS' })}>⇦</a>
-      <div className="bot_logo"><img height="58" width="58" src={bot_logo_src} alt="" /></div>
-      {name_control}
-      <div className={style.modules}>{options_html}</div>
-    </div>;
+    let header = (
+      <div className='header'>
+        &nbsp;
+        <a href='#' className='back' onClick={() => this.props.dispatch({ type: 'SHOW_MYBOTS' })}>
+          ⇦
+        </a>
+        <div className='bot_logo'>
+          <img height='58' width='58' src={bot_logo_src} alt='' />
+        </div>
+        {name_control}
+        <div className={style.modules}>{options_html}</div>
+      </div>
+    );
     return header;
   }
 
-  render () {
-    if (!this.props.show_bot)
-      return null;
+  render() {
+    if (!this.props.show_bot) return null;
 
     let bot = this.props.bot;
     let header = this.header();
@@ -163,19 +184,19 @@ class Bot_Content extends Component {
         break;
     }
 
-    return <div className="bot_container">
-      {header}
-      {content}
-    </div>;
+    return (
+      <div className='bot_container'>
+        {header}
+        {content}
+      </div>
+    );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   show_bot: state.show_bot,
   bot: state.bot,
   bot_id: state.bot_id
 });
 
-export default connect(
-  mapStateToProps
-)(Bot_Content);
+export default connect(mapStateToProps)(Bot_Content);

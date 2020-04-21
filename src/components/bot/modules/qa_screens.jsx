@@ -3,7 +3,7 @@ const { connect } = require('react-redux');
 const utils = require('./../../../utils.js');
 
 class QAScreens extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       question1: 'question1',
@@ -17,16 +17,17 @@ class QAScreens extends Component {
       answer2: 'Смартфон, фотик, фотоаппарат, телефон, камера, айфон',
       answer3: 'Полотенце, полотенец',
       answer4: 'Подушка',
-      answer5: 'Садовые ножницы, секатор, ножницы для сада, ножницы для цветов, ножницы для огорода, ножницы для дачи',
+      answer5:
+        'Садовые ножницы, секатор, ножницы для сада, ножницы для цветов, ножницы для огорода, ножницы для дачи',
       answer6: 'answer1',
       answer7: 'answer1'
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
     this.handleResponseModule = this.handleResponseModule.bind(this);
   }
 
-  handleChange (event) {
+  handleChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
@@ -36,19 +37,22 @@ class QAScreens extends Component {
     });
   }
 
-  handleResponse (response) {
+  handleResponse(response) {
     let bot = this.props.bot;
     utils.saveSessionBot(bot);
     this.message('Module data saved');
   }
 
-  message (text, type = 'info', id = 'message1') {
+  message(text, type = 'info', id = 'message1') {
     window.webix.message({
-      text, type, id, expire: 5000
+      text,
+      type,
+      id,
+      expire: 5000
     });
   }
 
-  send () {
+  send() {
     let obj = {
       l: utils.getCookie('l'),
       b: this.props.bot.id,
@@ -75,7 +79,7 @@ class QAScreens extends Component {
     utils.sendRequest(str, this.handleResponse, './data/saveoptions.php');
   }
 
-  handleResponseModule (data) {
+  handleResponseModule(data) {
     let state_obj = {
       answer1: data.data.answer1,
       answer2: data.data.answer2,
@@ -96,7 +100,7 @@ class QAScreens extends Component {
     this.setState(state_obj);
   }
 
-  getModuleData () {
+  getModuleData() {
     let add = {
       l: utils.getCookie('l'),
       b: this.props.bot.id,
@@ -108,24 +112,35 @@ class QAScreens extends Component {
     utils.sendRequest(str, this.handleResponseModule, './data/saveoptions.php');
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.getModuleData();
   }
 
-  screenAsnwer (screenNumber) {
+  screenAsnwer(screenNumber) {
     let screenInputName = 'question' + screenNumber;
     let answerInputName = 'answer' + screenNumber;
     return (
       <React.Fragment>
-        <div className="text_input">Screen&nbsp;
-          <input type="text" name={screenInputName} value={this.state[screenInputName]} onChange={this.handleChange}/>&nbsp;
-          <textarea name={answerInputName} value={this.state[answerInputName]} onChange={this.handleChange}/>
+        <div className='text_input'>
+          Screen&nbsp;
+          <input
+            type='text'
+            name={screenInputName}
+            value={this.state[screenInputName]}
+            onChange={this.handleChange}
+          />
+          &nbsp;
+          <textarea
+            name={answerInputName}
+            value={this.state[answerInputName]}
+            onChange={this.handleChange}
+          />
         </div>
       </React.Fragment>
-    )
+    );
   }
 
-  render () {
+  render() {
     return (
       <React.Fragment>
         <div>
@@ -135,18 +150,21 @@ class QAScreens extends Component {
           {this.screenAsnwer(4)}
           {this.screenAsnwer(5)}
         </div>
-        <div className="button" onClick={() => {
-          this.send();
-        }}>Save</div>
+        <div
+          className='button'
+          onClick={() => {
+            this.send();
+          }}
+        >
+          Save
+        </div>
       </React.Fragment>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   bot: state.bot
 });
 
-export default connect(
-  mapStateToProps
-)(QAScreens);
+export default connect(mapStateToProps)(QAScreens);

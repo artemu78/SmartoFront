@@ -16,7 +16,7 @@ let initial = {
   show_mybots: false,
   show_plan: false,
   show_service: false,
-  show_regsplash: true,
+  show_regsplash: true
 };
 if (utils.getCookie('st') === 'g' || window.location.hostname === 'localhost') {
   let user_name = utils.getCookie('nm') || 'Unknown user';
@@ -33,7 +33,7 @@ if (utils.getCookie('st') === 'g' || window.location.hostname === 'localhost') {
     show_regsplash: false,
     user_name,
     user_email,
-    userpic,
+    userpic
   };
 }
 window.sessionStorage.clear();

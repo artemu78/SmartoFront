@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 const utils = require('./../../../utils.js');
 
 class ContentModule extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     let login = utils.getCookie('l');
@@ -19,28 +19,25 @@ class ContentModule extends Component {
     ];
   }
   // ReactDOM.findDOMNode(this.refs.root)
-  custom_checkbox (obj, common, value) {
-    if (value === 1)
-      return "<div class='webix_table_checkbox checked'> да </div>";
-    else
-      return "<div class='webix_table_checkbox notchecked'> нет </div>";
+  custom_checkbox(obj, common, value) {
+    if (value === 1) return "<div class='webix_table_checkbox checked'> да </div>";
+    else return "<div class='webix_table_checkbox notchecked'> нет </div>";
   }
-  oneForAll (value, filter, obj) {
+  oneForAll(value, filter, obj) {
     if (this.equals(obj.name, filter)) return true;
     if (this.equals(obj.value, filter)) return true;
     if (this.equals(obj.branch, filter)) return true;
     if (this.equals(obj.type, filter)) return true;
     return false;
-  };
+  }
 
-  equals (a, b) {
-    if (a == null)
-      return false;
+  equals(a, b) {
+    if (a == null) return false;
     a = a.toString().toLowerCase();
     return a.indexOf(b) !== -1;
-  };
+  }
 
-  componentDidMount () {
+  componentDidMount() {
     this.ui = window.webix.ui({
       container: this.refs.root,
       rows: [
@@ -64,20 +61,39 @@ class ContentModule extends Component {
           id: 'mainTable',
           view: 'datatable',
           columns: [
-            { id: 'name',
-              header: 'Name',
+            {
+              id: 'name',
               width: 170,
               sort: 'string',
-              header: ['Code', { // eslint-disable-line
-                content: 'textFilter',
-                placeholder: 'Type here to filter the grid',
-                compare: this.oneForAll,
-                colspan: 4
-              }] },
+              header: [
+                'Code',
+                {
+                  // eslint-disable-line
+                  content: 'textFilter',
+                  placeholder: 'Type here to filter the grid',
+                  compare: this.oneForAll,
+                  colspan: 4
+                }
+              ]
+            },
             { id: 'value', header: 'Text', editor: 'popup', width: 300, sort: 'string' },
-            { id: 'type', header: 'Type', width: 100, sort: 'string', options: this._options, editor: 'select' },
+            {
+              id: 'type',
+              header: 'Type',
+              width: 100,
+              sort: 'string',
+              options: this._options,
+              editor: 'select'
+            },
             { id: 'branch', header: 'Branch', editor: 'text', width: 100, sort: 'string' },
-            { id: 'active', header: 'Active', width: 100, sort: 'string', template: this.custom_checkbox, editor: 'inline-checkbox' }
+            {
+              id: 'active',
+              header: 'Active',
+              width: 100,
+              sort: 'string',
+              template: this.custom_checkbox,
+              editor: 'inline-checkbox'
+            }
           ],
           width: 800,
           autoheight: true,
@@ -92,14 +108,16 @@ class ContentModule extends Component {
         {
           margin: 5,
           cols: [
-            { view: 'button',
+            {
+              view: 'button',
               label: 'Excel',
               width: 95,
               click: function () {
                 window.webix.toExcel(window.webix('mainTable'));
               }
             },
-            { view: 'button',
+            {
+              view: 'button',
               label: 'PDF',
               width: 95,
               click: function () {
@@ -112,17 +130,17 @@ class ContentModule extends Component {
     });
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.ui.destructor();
     this.ui = null;
   }
 
-  shouldComponentUpdate () {
+  shouldComponentUpdate() {
     return false;
   }
 
-  render () {
-    return <div id="root_root" ref="root"></div>;
+  render() {
+    return <div id='root_root' ref='root'></div>;
   }
 }
 
