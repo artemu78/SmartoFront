@@ -30,19 +30,19 @@ const App = function App() {
         </div>
         <div className='root_row2'>
           <Switch>
-            <Route exact path='/'>
+            <Route path='/support'>
+              <Support />
+            </Route>
+            <Route path='/profile'>
+              <Profile />
+            </Route>
+            <Route path='/'>
               <MyBots />
               <Menu />
               <Content />
               <Bot />
               <Plan />
               <Service />
-            </Route>
-            <Route path='/support'>
-              <Support />
-            </Route>
-            <Route path='/profile'>
-              <Profile />
             </Route>
           </Switch>
         </div>
