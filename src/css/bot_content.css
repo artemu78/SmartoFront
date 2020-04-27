@@ -41,6 +41,20 @@
     overflow: hidden;
 }
 
+.bot_container .header .header_text SPAN {
+    padding: 8px;
+}
+
+.bot_container .header .header_text SPAN SPAN {
+    color: lightgray;
+    font-size: smaller;
+}
+
+.bot_container .header .header_text SPAN:hover {
+    cursor: pointer;
+    background-color: #F1F2FA;
+}
+
 .bot_container .header .back{
     text-decoration: none;
     font-size: 44pt;

@@ -6,8 +6,8 @@ import Broadcast from './bot/Broadcast.jsx';
 import Users from './bot/users.jsx';
 import BotmStatistics from './bot/statistics.jsx';
 import utils from '../utils.js';
-import style from './../css/bot_content.css';
-import './../css/main.css';
+import style from 'css/bot_content.css';
+import 'css/main.css';
 const { connect } = require('react-redux');
 
 class Bot_Content extends Component {
@@ -103,7 +103,10 @@ class Bot_Content extends Component {
     if (!this.state.textName)
       name_control = (
         <div className='header_text' onClick={this.clickName}>
-          {this.state.botname}
+          <span>
+            {this.state.botname}
+            &nbsp;<span className='material-icons'>create</span>
+          </span>
         </div>
       );
     else
