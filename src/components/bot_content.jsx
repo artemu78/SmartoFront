@@ -6,7 +6,8 @@ import Broadcast from './bot/Broadcast.jsx';
 import Users from './bot/users.jsx';
 import BotmStatistics from './bot/statistics.jsx';
 import utils from '../utils.js';
-import style from 'css/bot_content.css';
+import bot_style from 'css/bot_content.css';
+import styles from './bot_content.scss';
 import 'css/main.css';
 const { connect } = require('react-redux');
 
@@ -100,10 +101,11 @@ class Bot_Content extends Component {
       position: 'absolute',
       left: 'auto'
     };
+    console.log(styles, 'style.test');
     if (!this.state.textName)
       name_control = (
         <div className='header_text' onClick={this.clickName}>
-          <span>
+          <span className={styles.test}>
             {this.state.botname}
             &nbsp;<span className='material-icons'>create</span>
           </span>
@@ -127,7 +129,7 @@ class Bot_Content extends Component {
       );
     let options_html = this.options.map((item, i) => {
       let cl = item.id === this.state.option ? 'selected' : 'selectable';
-      let classes = style.module + ' ' + cl;
+      let classes = bot_style.module + ' ' + cl;
       return (
         <div
           className={classes}
@@ -151,7 +153,7 @@ class Bot_Content extends Component {
           <img height='58' width='58' src={bot_logo_src} alt='' />
         </div>
         {name_control}
-        <div className={style.modules}>{options_html}</div>
+        <div className={bot_style.modules}>{options_html}</div>
       </div>
     );
     return header;
