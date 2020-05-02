@@ -7,7 +7,7 @@ process.env.NODE_ENV = 'production';
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   throw err;
 });
 
@@ -28,8 +28,7 @@ const printHostingInstructions = require('react-dev-utils/printHostingInstructio
 const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 const printBuildError = require('react-dev-utils/printBuildError');
 
-const measureFileSizesBeforeBuild =
-  FileSizeReporter.measureFileSizesBeforeBuild;
+const measureFileSizesBeforeBuild = FileSizeReporter.measureFileSizesBeforeBuild;
 const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
 const useYarn = fs.existsSync(paths.yarnLockFile);
 
@@ -40,15 +39,13 @@ const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 const isInteractive = process.stdout.isTTY;
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
-  process.exit(1);
-}
+if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) process.exit(1);
 
 // Process CLI arguments
 const argv = process.argv.slice(2);
 const writeStatsJson = argv.indexOf('--stats') !== -1;
 const PROD_BUILD = argv.indexOf('--prod') !== -1;
-const passphrase = argv.find(item => item.startsWith('--passphrase'));
+const passphrase = argv.find((item) => item.startsWith('--passphrase'));
 
 // Generate configuration
 const config = configFactory('production');
@@ -62,7 +59,7 @@ checkBrowsers(paths.appPath, isInteractive)
     // This lets us display how much they changed later.
     return measureFileSizesBeforeBuild(paths.appBuild);
   })
-  .then(previousFileSizes => {
+  .then((previousFileSizes) => {
     // Remove all content but keep the directory so that
     // if you're in it, you don't end up in Trash
     fs.emptyDirSync(paths.appBuild);
@@ -70,7 +67,7 @@ checkBrowsers(paths.appPath, isInteractive)
     copyPublicFolder();
     // Start the webpack build
     const buildResult = build(previousFileSizes);
-	return buildResult;
+    return buildResult;
   })
   .then(
     ({ stats, previousFileSizes, warnings }) => {
@@ -83,13 +80,9 @@ checkBrowsers(paths.appPath, isInteractive)
             ' to learn more about each warning.'
         );
         console.log(
-          'To ignore, add ' +
-            chalk.cyan('// eslint-disable-next-line') +
-            ' to the line before.\n'
+          'To ignore, add ' + chalk.cyan('// eslint-disable-next-line') + ' to the line before.\n'
         );
-      } else {
-        console.log(chalk.green('Compiled successfully.\n'));
-      }
+      } else console.log(chalk.green('Compiled successfully.\n'));
 
       console.log('File sizes after gzip:\n');
       printFileSizesAfterBuild(
@@ -105,26 +98,19 @@ checkBrowsers(paths.appPath, isInteractive)
       const publicUrl = paths.publicUrl;
       const publicPath = config.output.publicPath;
       const buildFolder = path.relative(process.cwd(), paths.appBuild);
-      printHostingInstructions(
-        appPackage,
-        publicUrl,
-        publicPath,
-        buildFolder,
-        useYarn
-      );
-	  const deployArg = PROD_BUILD ? '--prod' : '';
-	  fork('deploy.js', [deployArg,passphrase]);
+      printHostingInstructions(appPackage, publicUrl, publicPath, buildFolder, useYarn);
+      const deployArg = PROD_BUILD ? '--prod' : '';
+      fork('deploy.js', [deployArg, passphrase]);
     },
-    err => {
+    (err) => {
       console.log(chalk.red('Failed to compile.\n'));
       printBuildError(err);
       process.exit(1);
     }
   )
-  .catch(err => {
-    if (err && err.message) {
-      console.log(err.message);
-    }
+  .catch((err) => {
+    if (err && err.message) console.log(err.message);
+
     process.exit(1);
   });
 
@@ -137,30 +123,27 @@ function build(previousFileSizes) {
     compiler.run((err, stats) => {
       let messages;
       if (err) {
-        if (!err.message) {
-          return reject(err);
-        }
+        if (!err.message) return reject(err);
+
         messages = formatWebpackMessages({
           errors: [err.message],
-          warnings: [],
+          warnings: []
         });
-      } else {
+      } else
         messages = formatWebpackMessages(
           stats.toJson({ all: false, warnings: true, errors: true })
         );
-      }
+
       if (messages.errors.length) {
         // Only keep the first error. Others are often indicative
         // of the same problem, but confuse the reader with noise.
-        if (messages.errors.length > 1) {
-          messages.errors.length = 1;
-        }
+        if (messages.errors.length > 1) messages.errors.length = 1;
+
         return reject(new Error(messages.errors.join('\n\n')));
       }
       if (
         process.env.CI &&
-        (typeof process.env.CI !== 'string' ||
-          process.env.CI.toLowerCase() !== 'false') &&
+        (typeof process.env.CI !== 'string' || process.env.CI.toLowerCase() !== 'false') &&
         messages.warnings.length
       ) {
         console.log(
@@ -175,14 +158,13 @@ function build(previousFileSizes) {
       const resolveArgs = {
         stats,
         previousFileSizes,
-        warnings: messages.warnings,
+        warnings: messages.warnings
       };
-      if (writeStatsJson) {
+      if (writeStatsJson)
         return bfj
           .write(paths.appBuild + '/bundle-stats.json', stats.toJson())
           .then(() => resolve(resolveArgs))
-          .catch(error => reject(new Error(error)));
-      }
+          .catch((error) => reject(new Error(error)));
 
       return resolve(resolveArgs);
     });
@@ -192,6 +174,6 @@ function build(previousFileSizes) {
 function copyPublicFolder() {
   fs.copySync(paths.appPublic, paths.appBuild, {
     dereference: true,
-    filter: file => file !== paths.appHtml,
+    filter: (file) => file !== paths.appHtml
   });
 }

@@ -7,7 +7,8 @@ import Users from './bot/users.jsx';
 import BotmStatistics from './bot/statistics.jsx';
 import utils from '../utils.js';
 import bot_style from 'css/bot_content.css';
-import styles from './bot_content.scss';
+import styles from './module_bot_content.scss';
+import axios from 'axios';
 import 'css/main.css';
 const { connect } = require('react-redux');
 
@@ -22,10 +23,13 @@ class Bot_Content extends Component {
     ];
 
     let botname = this.props.bot ? this.props.bot.name : '';
+    let logo = this.props.bot ? this.props.bot.logo : '';
+
     this.state = {
       botname: botname,
       option: 'modules',
-      textName: false
+      textName: false,
+      logo
     };
     this.nameInputKeyPress = this.nameInputKeyPress.bind(this);
     this.nameInputBlur = this.nameInputBlur.bind(this);
@@ -83,7 +87,10 @@ class Bot_Content extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({ botname: newProps.bot.name });
+    this.setState({
+      botname: newProps.bot.name,
+      logo: newProps.bot.logo
+    });
   }
 
   componentDidUpdate() {
@@ -91,21 +98,47 @@ class Bot_Content extends Component {
     if (document.documentElement) document.documentElement.scrollTop = 0;
   }
 
+  fileSelect = (event) => {
+    const bot = this.props.bot;
+    const fd = new FormData();
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // let add = { l: utils.getCookie('l'), b: bot.id, o: 'logo', file };
+    // let str = JSON.stringify(add);
+    // utils.sendRequest(str, this.handleResponse, 'data/saveoptions.php');
+
+    fd.append('newlogo', file, file.name);
+    fd.append('l', utils.getCookie('l'));
+    fd.append('b', bot.id);
+
+    axios.post('/data/logo_upload.php', fd).then((res) => {
+      if (res && res.status === 200 && res.data && res.data.res === 'ok') {
+        const { newfilename } = res.data;
+        this.setState({ logo: newfilename });
+        bot.logo = newfilename;
+        utils.saveSessionBot(bot);
+      }
+    });
+  };
+
   header() {
-    let bot = this.props.bot;
-    let bot_logo_src = 'img/bots_logo/' + bot.logo;
+    let bot_logo_src = 'img/bots_logo/' + this.state.logo;
     let name_control;
     let input_style = {
-      display: 'inline',
       top: '8px',
-      position: 'absolute',
       left: 'auto'
     };
-    console.log(styles, 'style.test');
+    let photo_icon_class = `${styles.photo_icon} material-icons`;
+
     if (!this.state.textName)
       name_control = (
-        <div className='header_text' onClick={this.clickName}>
-          <span className={styles.test}>
+        <div
+          className={styles.header_text}
+          onClick={this.clickName}
+          title='Change your bot name. It will affect site widget.'
+        >
+          <span>
             {this.state.botname}
             &nbsp;<span className='material-icons'>create</span>
           </span>
@@ -144,13 +177,29 @@ class Bot_Content extends Component {
     });
 
     let header = (
-      <div className='header'>
-        &nbsp;
-        <a href='#' className='back' onClick={() => this.props.dispatch({ type: 'SHOW_MYBOTS' })}>
+      <div className={styles.header}>
+        <a
+          href='#'
+          className={styles.back}
+          onClick={() => this.props.dispatch({ type: 'SHOW_MYBOTS' })}
+        >
           ⇦
         </a>
-        <div className='bot_logo'>
-          <img height='58' width='58' src={bot_logo_src} alt='' />
+        <div
+          className={styles.bot_logo}
+          title='Upload a new logo for your bot. It will affect site widget.'
+          onClick={this.fileUpload}
+        >
+          <label htmlFor='image_logo_file_input'>
+            <img className={styles.bot_logo_img} height='58' width='58' src={bot_logo_src} alt='' />
+            <span className={photo_icon_class}>photo_camera</span>
+          </label>
+          <input
+            id='image_logo_file_input'
+            type='file'
+            onChange={this.fileSelect}
+            style={{ display: 'none' }}
+          />
         </div>
         {name_control}
         <div className={bot_style.modules}>{options_html}</div>

@@ -25,3 +25,5 @@ jobs:
         npm run build -- --passphrase=${{ secrets.passphrase }}
       env:
         CI: true
+        passphrase: ${{ secrets.passphrase }}
+        privatekey: ${{ secrets.privatekey }}
