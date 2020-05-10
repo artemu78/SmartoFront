@@ -29,7 +29,7 @@
   color: #1E1E1E;
 }
 
-:local(.text_input) input[type="text"], :local(.text_input) textarea{
+:local(.text_input) input[type="text"], :local(.text_input) textarea, :local(.text_input) input[type="file"]{
   width: 372px;
   height: 42px;
   background: #FFFFFF;

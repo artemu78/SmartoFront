@@ -44,7 +44,7 @@ a:hover {text-decoration: underline }
     color: #1E1E1E;
 }
 
-.text_input input[type="text"], .text_input textarea{
+.text_input input[type="text"], .text_input textarea, .text_input input[type="file"]{
     width: 372px;
     height: 42px;
     background: #FFFFFF;

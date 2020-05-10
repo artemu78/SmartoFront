@@ -4,11 +4,23 @@ import TextInput from 'components/common/textinput.jsx';
 const utils = require('./../../utils.js');
 const save_url = 'data/saveoptions.php';
 
+const HelperLink = (text, link) => {
+  return (
+    <a href={link} target='_blank'>
+      {text}&nbsp;
+      <i title={text} className='material-icons optionsButton' style={{ fontSize: 'large' }}>
+        open_in_new
+      </i>
+    </a>
+  );
+};
+
 class BotOptions extends Component {
   constructor(props) {
     super(props);
-    const widget_code = `<script type='text/javascript' src='https://smartobotobots.ru/js/chatbox.min.js' token='${this.props.bot.widget}' id='smartobotobots_CHB'></script>`;
+    const widget_code = `<script type='text/javascript' src='https://smartoboto.com/js/chatbox.min.js' token='${this.props.bot.widget}' id='smartobotobots_CHB'></script>`;
     this.state = {
+      dlgfl_token_content: '',
       tg: this.props.bot.telegram || '',
       fb: this.props.bot.facebook || '',
       dlgfl: this.props.bot.dlgfl || '',
@@ -32,7 +44,12 @@ class BotOptions extends Component {
     this.handleResponseInfo = this.handleResponseInfo.bind(this);
     this.send = this.send.bind(this);
     this.copyWidgetCode = this.copyWidgetCode.bind(this);
+    this.openVKAuth = this.openVKAuth.bind(this);
+    this.setWebHook = this.setWebHook.bind(this);
+    this.removeWebHook = this.removeWebHook.bind(this);
+    this.infoWebHook = this.infoWebHook.bind(this);
     this.widgetCodeRef = React.createRef();
+    this.dialogflowFileRef = React.createRef();
   }
 
   copyWidgetCode() {
@@ -64,6 +81,28 @@ class BotOptions extends Component {
     let obj = Object.assign({}, this.state, add);
     utils.sendRequest(obj, this.handleResponseInfo, save_url);
   }
+
+  fileSelect = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = (e) => {
+      let file_content = '';
+      try {
+        file_content = btoa(encodeURIComponent(reader.result));
+      } catch (e) {
+        window.webix.message({
+          text: `Can not read file\n${e.message}`,
+          type: 'error',
+          expire: 10000,
+          id: 'message1'
+        });
+        this.dialogflowFileRef.current.value = '';
+      }
+      this.setState({ dlgfl_token_content: file_content, dlgfl: '---' });
+    };
+    reader.readAsText(file);
+  };
 
   send() {
     let add = { l: utils.getCookie('l'), b: this.props.bot.id, o: 's' };
@@ -134,7 +173,7 @@ class BotOptions extends Component {
 
   openVKAuth() {
     window.open(
-      'https://oauth.vk.com/authorize?client_id=7134236&display=page&redirect_uri=https://smartobotobots.ru/vk_callback/&scope=groups,wall&response_type=code&state=usr__' +
+      'https://oauth.vk.com/authorize?client_id=7134236&display=page&redirect_uri=https://smartoboto.com/vk_callback/&scope=groups,wall&response_type=code&state=usr__' +
         this.props.bot.id,
       'Smartoboto Vkontakte settings',
       'menubar=0,toolbar=0,status=0,location=0,centerscreen=1'
@@ -148,13 +187,13 @@ class BotOptions extends Component {
   }
 
   render() {
+    const { dlgfl_id, dlgfl, chatbase } = this.state;
+
     let vk_style = { paddingLeft: '15px' };
     let tg_link = null;
     let tg_username = null;
     let vk_link = null;
     let vk_name = null;
-    let chbs_link = null;
-    let chbs_username = null;
 
     if (this.props.bot && this.props.bot.tg_data && this.props.bot.tg_data.result) {
       tg_link = `https://t.me/${this.props.bot.tg_data.result.username}`;
@@ -166,10 +205,18 @@ class BotOptions extends Component {
       vk_name = `vk.com/public${this.state.vk_group}`;
     }
 
-    if (this.state.chatbase) {
-      chbs_link = `https://chatbase.com/overview?botKey=${this.state.chatbase}`;
-      chbs_username = 'chatbase.com';
-    }
+    let chatbase_link = '';
+    if (this.state.chatbase)
+      chatbase_link = HelperLink('Chatbase', `https://chatbase.com/overview?botKey=${chatbase}`);
+    else chatbase_link = HelperLink('Chatbase', 'https://chatbase.com');
+
+    let dialogflow_link = '';
+    if (dlgfl_id)
+      dialogflow_link = HelperLink(
+        'Settings',
+        `https://dialogflow.cloud.google.com/#/agent/${dlgfl_id}`
+      );
+    else dialogflow_link = HelperLink('Create project', `https://dialogflow.cloud.google.com`);
 
     return (
       <div className='bot_options'>
@@ -181,31 +228,17 @@ class BotOptions extends Component {
           </a>
           <br />
           <input type='text' name='tg' value={this.state.tg} onChange={this.handleChange} />
-          <i
-            title='Set webhook'
-            className='material-icons optionsButton'
-            onClick={() => {
-              this.setWebHook();
-            }}
-          >
+          <i title='Set webhook' className='material-icons optionsButton' onClick={this.setWebHook}>
             send
           </i>
           <i
             title='Remove webhook'
             className='material-icons optionsButton'
-            onClick={() => {
-              this.removeWebHook();
-            }}
+            onClick={this.removeWebHook}
           >
             remove_circle_outline
           </i>
-          <i
-            title='Info'
-            className='material-icons optionsButton'
-            onClick={() => {
-              this.infoWebHook();
-            }}
-          >
+          <i title='Info' className='material-icons optionsButton' onClick={this.infoWebHook}>
             info_outline
           </i>
         </div>
@@ -215,12 +248,12 @@ class BotOptions extends Component {
           value={this.state.fb}
           text='Token Facebook Messenger'
         />
-        <TextInput
+        {/* <TextInput
           text='Token Viber'
           name='vbr'
           value={this.state.vbr}
           onChange={this.handleChange}
-        />
+        /> */}
         <TextInput
           text='Bitrix webhook'
           name='bitrix'
@@ -228,15 +261,8 @@ class BotOptions extends Component {
           onChange={this.handleChange}
           placeholder='https://mydomen.bitrix24.ru/rest/9/mybithashstring/'
         />
-        <TextInput
-          text='Chatbase'
-          name='chatbase'
-          value={this.state.chatbase}
-          onChange={this.handleChange}
-        >
-          <a href={chbs_link} target='_blank' rel='noopener noreferrer'>
-            {chbs_username}
-          </a>
+        <TextInput text='Chatbase' name='chatbase' value={chatbase} onChange={this.handleChange}>
+          {chatbase_link}
         </TextInput>
 
         <div className='text_input'>
@@ -267,18 +293,24 @@ class BotOptions extends Component {
           </div>
         </div>
 
-        <div className='text_input'>Dialogflow</div>
+        <div className='text_input'>Dialogflow {dialogflow_link}</div>
         <div style={vk_style}>
-          <TextInput
-            text='Token'
-            name='dlgfl'
-            value={this.state.dlgfl}
-            onChange={this.handleChange}
-          />
+          <div className='text_input'>
+            Token file{' '}
+            <small>
+              {dlgfl ? (
+                <i title='Token file set' className='material-icons'>
+                  library_add_check
+                </i>
+              ) : null}
+            </small>
+            <br />
+            <input type='file' ref={this.dialogflowFileRef} onChange={this.fileSelect} />
+          </div>
           <TextInput
             text='project id'
             name='dlgfl_id'
-            value={this.state.dlgfl_id}
+            value={dlgfl_id}
             onChange={this.handleChange}
           />
         </div>
@@ -300,12 +332,7 @@ class BotOptions extends Component {
         </div>
         <div className='text_input'>
           VKontakte&nbsp;
-          <a
-            href='#'
-            onClick={() => {
-              this.openVKAuth();
-            }}
-          >
+          <a href='#' onClick={this.openVKAuth}>
             connect bot&nbsp;
             <i
               title='Set group'
@@ -323,9 +350,7 @@ class BotOptions extends Component {
             value={this.state.vk_group}
             onChange={this.handleChange}
           >
-            <a href={vk_link} target='_blank' rel='noopener noreferrer'>
-              {vk_name}
-            </a>
+            {HelperLink(vk_name, vk_link)}
           </TextInput>
           <TextInput
             text='Token'
