@@ -15,10 +15,10 @@ exports[`<TextInput text=Send name=testname value=kot readOnly> 1`] = `
   </div>
   <br />
   <input
+    defaultValue="kot"
     name="testname"
     readOnly={true}
     type="text"
-    value="kot"
   />
 </div>
 `;

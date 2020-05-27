@@ -4,7 +4,7 @@ import TextInput from '../components/common/textinput';
 import renderer from 'react-test-renderer';
 
 test('<Button text=Send>', () => {
-  const _button = renderer.create(<Button text='Send'/>);
+  const _button = renderer.create(<Button text='Send' />);
   let json_string = _button.toJSON();
   expect(json_string).toMatchSnapshot();
 });

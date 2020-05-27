@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import styles from './../css/mybots.css';
-
+import style from './mybots.module.scss';
+import BotInfo from './botInfo';
 const my_bots = require('root/test_data/test_bots');
 const bots_url = 'data/bots.php';
 const { connect } = require('react-redux');
-const utils = require('./../utils.js');
+const utils = require('root/utils.js');
 
 class MyBots extends Component {
   constructor() {
     super();
-    let bots = [];
-    this.state = { bots: bots };
+    this.state = { bots: [] };
     this.display_bots = this.display_bots.bind(this);
+    this.bot_click = this.bot_click.bind();
   }
 
   componentDidMount() {
@@ -79,35 +79,10 @@ class MyBots extends Component {
   render() {
     if (!this.props.show_mybots) return null;
 
-    let bot_divs = this.state.bots.map((item, i) => {
-      return this.bot_template(item, i);
-    });
-    return <div className='bots_container'>{bot_divs}</div>;
-  }
-
-  bot_template(item, i) {
-    let logo = 'img/bots_logo/' + item.logo;
-    let icons = item.social.map((soci_item, i) => {
-      let icon = `img/social/35x35/${soci_item}.png`;
-      return <img src={icon} key={i} alt='social' />;
-    });
-    return (
-      <div className='bot_box' key={i} onClick={(e) => this.bot_click(item)}>
-        <div className={styles.logo}>
-          <img src={logo} alt={item.name} />
-        </div>
-        <div className='date'>{item.create_dt}</div>
-        <div className='name'>{item.name}</div>
-        <div className='template'>{item.template}</div>
-        <div className='settings'>
-          <img src='img/settings.png' alt='Bot settings' />
-        </div>
-        <div className='social'>Social:</div>
-        <div className='icons'>{icons}</div>
-        <div className='users'>Users:</div>
-        <div className='users_val'>{item.users}</div>
-      </div>
-    );
+    let bot_divs = this.state.bots.map((item, i) => (
+      <BotInfo bot={item} key={i} bot_click={this.bot_click} />
+    ));
+    return <div className={style.bots_container}>{bot_divs}</div>;
   }
 }
 

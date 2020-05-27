@@ -3,7 +3,7 @@ import Header from './components/header.jsx';
 import Menu from './components/menu.jsx';
 import Content from './components/content.jsx';
 import Profile from './components/profile.jsx';
-import MyBots from './components/mybots.jsx';
+import MyBots from './components/mybots';
 import RegSplash from './components/regsplash.jsx';
 import Bot from './components/bot_content.jsx';
 import Support from './components/support.jsx';
